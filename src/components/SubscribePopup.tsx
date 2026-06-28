@@ -65,27 +65,43 @@ export function SubscribePopup({
     }
   }
 
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setStatus('error');
+      setErrorMsg('Please enter a valid email address.');
       return;
     }
     setStatus('submitting');
-    // No backend wired yet — persist locally and treat as success.
-    // To wire up: POST to /api/subscribe or a Mailchimp/Beehiiv endpoint.
+    setErrorMsg(null);
+
     try {
-      const stored = JSON.parse(localStorage.getItem('signal24_subscribers') ?? '[]');
-      stored.push({ email, ts: new Date().toISOString() });
-      localStorage.setItem('signal24_subscribers', JSON.stringify(stored));
-      localStorage.setItem(STORAGE_KEY, '1');
-    } catch {
-      // ignore
-    }
-    setTimeout(() => {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'signal24-popup' }),
+      });
+
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setStatus('error');
+        setErrorMsg(data.error ?? 'Could not complete sign-up. Please try again.');
+        return;
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEY, '1');
+      } catch {
+        // storage failure is non-fatal
+      }
       setStatus('done');
-      setTimeout(() => setOpen(false), 1800);
-    }, 400);
+      setTimeout(() => setOpen(false), 2200);
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error — please check your connection and try again.');
+    }
   }
 
   if (!open) return null;
@@ -161,7 +177,10 @@ export function SubscribePopup({
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
-                    if (status === 'error') setStatus('idle');
+                    if (status === 'error') {
+                      setStatus('idle');
+                      setErrorMsg(null);
+                    }
                   }}
                   className="min-w-0 flex-1 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 dark:border-neutral-700 dark:bg-neutral-800"
                 />
@@ -173,8 +192,8 @@ export function SubscribePopup({
                   {status === 'submitting' ? '…' : 'Subscribe'}
                 </button>
               </form>
-              {status === 'error' && (
-                <p className="mt-2 text-xs text-red-600">Please enter a valid email.</p>
+              {status === 'error' && errorMsg && (
+                <p className="mt-2 text-xs text-red-600">{errorMsg}</p>
               )}
             </>
           )}
