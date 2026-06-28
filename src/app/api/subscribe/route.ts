@@ -56,15 +56,31 @@ export async function POST(req: Request) {
       },
     );
 
-    // Beehiiv responds 200/201 on success, 400-level on validation issues.
+    const upstreamText = await upstream.text();
+    // Always log the upstream response so we can diagnose silent rejections.
+    console.log(`[subscribe] beehiiv ${upstream.status}: ${upstreamText.slice(0, 500)}`);
+
+    // Debug query param surfaces the raw Beehiiv response. Temporary — remove
+    // once subscribe flow is verified end-to-end.
+    const debug = new URL(req.url).searchParams.get('debug') === '1';
+
     if (!upstream.ok) {
-      const text = await upstream.text();
-      console.error(`[subscribe] beehiiv ${upstream.status}: ${text.slice(0, 300)}`);
-      // Don't leak upstream errors to the user — just say it failed.
       return NextResponse.json(
-        { error: 'Could not complete sign-up. Please try again later.' },
+        debug
+          ? { error: 'upstream failed', status: upstream.status, upstream: upstreamText }
+          : { error: 'Could not complete sign-up. Please try again later.' },
         { status: 502 },
       );
+    }
+
+    if (debug) {
+      let upstreamJson: unknown = upstreamText;
+      try {
+        upstreamJson = JSON.parse(upstreamText);
+      } catch {
+        // not JSON, keep raw text
+      }
+      return NextResponse.json({ ok: true, upstream: upstreamJson });
     }
 
     return NextResponse.json({ ok: true });
