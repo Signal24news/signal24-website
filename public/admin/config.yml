@@ -1,0 +1,67 @@
+# Decap CMS configuration for Signal 24.
+# Default backend is GitHub. To enable, push this repo to GitHub and turn on
+# Netlify Identity OR GitHub OAuth via Decap's backend docs.
+# For local editing during dev, run: `npx decap-server` and open /admin.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Uncomment when running `npx decap-server` for local CMS development.
+# local_backend: true
+
+site_url: https://signal24.info
+display_url: https://signal24.info
+logo_url: /favicon.svg
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    label_singular: "Article"
+    folder: "content/articles"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{category}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: ['date', 'title', 'category']
+    view_filters:
+      - label: "Featured"
+        field: featured
+        pattern: true
+      - label: "Breaking"
+        field: breaking
+        pattern: true
+      - label: "Pakistan"
+        field: category
+        pattern: pakistan
+      - label: "World"
+        field: category
+        pattern: world
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "1–2 sentence summary. Used for cards, social shares, and SEO." }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Pakistan", value: "pakistan" }
+          - { label: "World", value: "world" }
+          - { label: "Sports", value: "sports" }
+          - { label: "Tech", value: "tech" }
+          - { label: "Business", value: "business" }
+        default: "pakistan"
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Signal 24 Desk" }
+      - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
+      - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }
+      - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Breaking news", name: "breaking", widget: "boolean", default: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false, default: [] }
+      - { label: "Body", name: "body", widget: "markdown" }
