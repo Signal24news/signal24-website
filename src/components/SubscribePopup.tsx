@@ -78,14 +78,18 @@ export function SubscribePopup({
     setErrorMsg(null);
 
     try {
+      // eslint-disable-next-line no-console
+      console.log('[Signal 24] subscribing:', email);
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, source: 'signal24-popup' }),
       });
+      const data = (await res.json().catch(() => ({}))) as { error?: string; ok?: boolean };
+      // eslint-disable-next-line no-console
+      console.log('[Signal 24] subscribe response:', res.status, data);
 
       if (!res.ok) {
-        const data = (await res.json().catch(() => ({}))) as { error?: string };
         setStatus('error');
         setErrorMsg(data.error ?? 'Could not complete sign-up. Please try again.');
         return;
