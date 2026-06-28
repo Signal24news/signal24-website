@@ -1,11 +1,14 @@
-# Decap CMS configuration for Signal 24.
-# Default backend is GitHub. To enable, push this repo to GitHub and turn on
-# Netlify Identity OR GitHub OAuth via Decap's backend docs.
-# For local editing during dev, run: `npx decap-server` and open /admin.
+# Decap CMS — GitHub OAuth backend.
+# The /api/auth and /api/callback serverless routes (deployed alongside this
+# site on Vercel) handle the OAuth handshake using GITHUB_CLIENT_ID and
+# GITHUB_CLIENT_SECRET env vars set in the Vercel project.
 
 backend:
-  name: git-gateway
+  name: github
+  repo: signal24news/signal24-website
   branch: main
+  base_url: https://www.signal24.info
+  auth_endpoint: api/auth
 
 # Uncomment when running `npx decap-server` for local CMS development.
 # local_backend: true
