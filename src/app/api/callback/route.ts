@@ -55,9 +55,10 @@ export async function GET(req: Request) {
     return errorPage(`Failed to reach GitHub: ${(err as Error).message}`);
   }
 
-  // Decap listens for two postMessage events from the popup:
-  //   1) "authorizing:github"           -> popup is ready, send the payload
-  //   2) "authorization:github:success:{json}"  -> contains the token
+  // Decap postMessage handshake:
+  //   1) popup -> opener:  "authorizing:github"   (we say we're ready)
+  //   2) opener -> popup:  any message            (opener acks; gives us its origin)
+  //   3) popup -> opener:  "authorization:github:success:{json}"  (token delivered)
   const payload = JSON.stringify({ token, provider: 'github' });
   const html = `<!doctype html>
 <html><head><meta charset="utf-8"><title>Signing in…</title></head>
@@ -65,19 +66,21 @@ export async function GET(req: Request) {
 <p>Authentication successful — finishing sign-in…</p>
 <script>
 (function() {
-  function send(status, content) {
-    if (!window.opener) return;
-    var message = 'authorization:github:' + status + ':' + JSON.stringify(content);
-    window.opener.postMessage(message, '*');
+  if (!window.opener) {
+    document.body.innerHTML += '<p>No opener window — please retry from /admin.</p>';
+    return;
   }
-  window.addEventListener('message', function (ev) {
-    if (ev.data === 'authorizing:github') {
-      send('success', ${payload});
-    }
-  }, false);
-  // Decap's listener may already be attached — emit once immediately too.
-  send('success', ${payload});
-  setTimeout(function () { window.close(); }, 1500);
+  function receive(ev) {
+    if (!ev || ev.source !== window.opener) return;
+    window.opener.postMessage(
+      'authorization:github:success:' + ${JSON.stringify(payload)},
+      ev.origin || '*'
+    );
+    setTimeout(function () { window.close(); }, 800);
+  }
+  window.addEventListener('message', receive, false);
+  // Announce readiness. Decap's listener will echo back, then we send the token.
+  window.opener.postMessage('authorizing:github', '*');
 })();
 </script>
 </body></html>`;
