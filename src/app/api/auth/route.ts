@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 // GitHub will redirect back to /api/callback?code=... with the auth code,
 // which /api/callback exchanges for an access token.
 export async function GET(req: Request) {
-  const clientId = process.env.GITHUB_CLIENT_ID;
+  const clientId = process.env.GITHUB_CLIENT_ID?.trim();
   if (!clientId) {
     return new NextResponse('GITHUB_CLIENT_ID is not configured.', { status: 500 });
   }

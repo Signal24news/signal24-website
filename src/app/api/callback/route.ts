@@ -12,8 +12,8 @@ export async function GET(req: Request) {
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');
 
-  const clientId = process.env.GITHUB_CLIENT_ID;
-  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  const clientId = process.env.GITHUB_CLIENT_ID?.trim();
+  const clientSecret = process.env.GITHUB_CLIENT_SECRET?.trim();
 
   if (!clientId || !clientSecret) {
     return errorPage('GitHub OAuth env vars (GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET) are not configured on the server.');
