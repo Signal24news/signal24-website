@@ -20,7 +20,8 @@ logo_url: /favicon.svg
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-publish_mode: editorial_workflow
+# Direct publishing — no editorial review queue.
+# Switch back to `publish_mode: editorial_workflow` once you have more than one author.
 
 collections:
   - name: "articles"
