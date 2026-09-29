@@ -6,7 +6,7 @@ excerpt: The 34-year-old all-rounder, architect of England's 2019 World Cup and
   focus on franchise cricket and his recovery from chronic knee problems.
 category: sports
 date: 2026-06-29T01:41:00.000+05:00
-author: Saad Ali-Sports Editor
+author: Saad Ali
 image: /uploads/chatgpt-image-jun-29-2026-01_45_18-am.png
 featured: true
 breaking: true

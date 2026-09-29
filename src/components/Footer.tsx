@@ -52,30 +52,27 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">Signal 24</h3>
             <ul className="mt-3 space-y-2 text-sm">
-              <li>
-                <Link href="/about" className="text-neutral-700 hover:text-brand dark:text-neutral-300">
-                  About
-                </Link>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="text-neutral-700 hover:text-brand dark:text-neutral-300"
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <Link href="/rss.xml" className="text-neutral-700 hover:text-brand dark:text-neutral-300">
-                  RSS feed
-                </Link>
-              </li>
+              {[
+                { href: '/about', label: 'About' },
+                { href: '/contact', label: 'Contact' },
+                { href: '/editorial-policy', label: 'Editorial Policy' },
+                { href: '/corrections', label: 'Corrections' },
+                { href: '/privacy-policy', label: 'Privacy Policy' },
+                { href: '/terms', label: 'Terms of Use' },
+                { href: '/rss.xml', label: 'RSS feed' },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-neutral-700 hover:text-brand dark:text-neutral-300">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-neutral-200 pt-6 text-xs text-neutral-500 sm:flex-row dark:border-neutral-800">
-          <p>© {year} Signal 24. All rights reserved.</p>
+          <p>© {year} Signal 24. Independent news. All rights reserved.</p>
           <p>{SITE.tagline}</p>
         </div>
       </div>

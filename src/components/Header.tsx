@@ -19,7 +19,7 @@ export function Header() {
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 text-neutral-700 md:hidden dark:border-neutral-800 dark:text-neutral-200"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-neutral-200 text-neutral-700 lg:hidden dark:border-neutral-800 dark:text-neutral-200"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path
@@ -33,13 +33,13 @@ export function Header() {
           <Logo />
         </div>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-1 text-sm font-medium">
+        <nav aria-label="Primary" className="hidden lg:block">
+          <ul className="flex items-center gap-0.5 text-sm font-medium">
             {CATEGORIES.map((c) => (
               <li key={c.slug}>
                 <Link
                   href={`/category/${c.slug}`}
-                  className="rounded-md px-3 py-2 text-neutral-700 transition hover:bg-neutral-100 hover:text-brand dark:text-neutral-200 dark:hover:bg-neutral-900"
+                  className="whitespace-nowrap rounded-md px-2.5 py-2 text-neutral-700 transition hover:bg-neutral-100 hover:text-brand dark:text-neutral-200 dark:hover:bg-neutral-900"
                 >
                   {c.name}
                 </Link>
@@ -48,7 +48,7 @@ export function Header() {
             <li>
               <Link
                 href="/about"
-                className="rounded-md px-3 py-2 text-neutral-700 transition hover:bg-neutral-100 hover:text-brand dark:text-neutral-200 dark:hover:bg-neutral-900"
+                className="whitespace-nowrap rounded-md px-2.5 py-2 text-neutral-700 transition hover:bg-neutral-100 hover:text-brand dark:text-neutral-200 dark:hover:bg-neutral-900"
               >
                 About
               </Link>
@@ -57,7 +57,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden lg:block">
+          <div className="hidden 2xl:block">
             <SearchBar />
           </div>
           <ThemeToggle />
@@ -65,7 +65,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-neutral-200 bg-white md:hidden dark:border-neutral-800 dark:bg-ink">
+        <div className="border-t border-neutral-200 bg-white lg:hidden dark:border-neutral-800 dark:bg-ink">
           <div className="mx-auto max-w-7xl px-4 py-3">
             <SearchBar compact />
             <ul className="mt-3 grid grid-cols-2 gap-1 text-sm font-medium">

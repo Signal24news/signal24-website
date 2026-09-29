@@ -44,14 +44,22 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     slug,
     title: data.title ?? 'Untitled',
     excerpt: data.excerpt ?? content.slice(0, 180).replace(/\s+/g, ' ').trim() + '…',
-    category: (data.category ?? 'pakistan') as CategorySlug,
+    category: (data.category ?? 'world') as CategorySlug,
     date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-    author: data.author ?? 'Signal 24 Desk',
-    image: data.image ?? '/images/placeholder.jpg',
+    author: data.author ?? 'Saad Ali',
+    image: data.image ?? '/og-default.png',
     imageAlt: data.imageAlt ?? data.title,
     featured: Boolean(data.featured),
     breaking: Boolean(data.breaking),
     tags: data.tags ?? [],
+    signal:
+      data.signal && (data.signal.whatHappened || data.signal.whyItMatters || data.signal.whatsNext)
+        ? {
+            whatHappened: data.signal.whatHappened || undefined,
+            whyItMatters: data.signal.whyItMatters || undefined,
+            whatsNext: data.signal.whatsNext || undefined,
+          }
+        : undefined,
     body: html,
     readingTime: rt.text,
     readingMinutes: Math.max(1, Math.round(rt.minutes)),
@@ -87,4 +95,10 @@ export async function getRelatedArticles(article: Article, limit = 3): Promise<A
   return all
     .filter((a) => a.slug !== article.slug && a.category === article.category)
     .slice(0, limit);
+}
+
+export async function getArticlesByAuthorName(name: string): Promise<Article[]> {
+  const all = await getAllArticles();
+  const n = name.toLowerCase();
+  return all.filter((a) => a.author.toLowerCase().startsWith(n));
 }

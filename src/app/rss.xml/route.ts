@@ -6,7 +6,7 @@ export const revalidate = 600;
 
 export async function GET() {
   const feed = new RSS({
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} | ${SITE.tagline}`,
     description: SITE.description,
     site_url: SITE.url,
     feed_url: `${SITE.url}/rss.xml`,

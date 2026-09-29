@@ -104,7 +104,7 @@ export function SubscribePopup({
       setTimeout(() => setOpen(false), 2200);
     } catch {
       setStatus('error');
-      setErrorMsg('Network error — please check your connection and try again.');
+      setErrorMsg('Network error. Please check your connection and try again.');
     }
   }
 
@@ -166,7 +166,7 @@ export function SubscribePopup({
         <div className="px-4 pb-4">
           {status === 'done' ? (
             <p className="rounded-md bg-green-50 px-3 py-2 text-sm text-green-700 dark:bg-green-950 dark:text-green-300">
-              ✓ Thanks — you’re on the list.
+              ✓ Thanks, you’re on the list.
             </p>
           ) : (
             <>

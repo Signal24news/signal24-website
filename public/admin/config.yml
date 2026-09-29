@@ -42,12 +42,12 @@ collections:
       - label: "Breaking"
         field: breaking
         pattern: true
-      - label: "Pakistan"
-        field: category
-        pattern: pakistan
       - label: "World"
         field: category
         pattern: world
+      - label: "Middle East"
+        field: category
+        pattern: middle-east
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "1–2 sentence summary. Used for cards, social shares, and SEO." }
@@ -55,17 +55,29 @@ collections:
         name: "category"
         widget: "select"
         options:
-          - { label: "Pakistan", value: "pakistan" }
           - { label: "World", value: "world" }
-          - { label: "Sports", value: "sports" }
-          - { label: "Tech", value: "tech" }
+          - { label: "Middle East", value: "middle-east" }
           - { label: "Business", value: "business" }
-        default: "pakistan"
+          - { label: "AI & Tech", value: "ai-tech" }
+          - { label: "Sports", value: "sports" }
+          - { label: "Fact Check", value: "fact-check" }
+          - { label: "Explainers", value: "explainers" }
+        default: "world"
       - { label: "Publish date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "Signal 24 Desk" }
+      - { label: "Author", name: "author", widget: "string", default: "Saad Ali", hint: "Use the exact name from the author profile, e.g. Saad Ali." }
       - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }
       - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false }
       - { label: "Breaking news", name: "breaking", widget: "boolean", default: false }
       - { label: "Tags", name: "tags", widget: "list", required: false, default: [] }
+      - label: "Signal Box"
+        name: "signal"
+        widget: "object"
+        required: false
+        collapsed: false
+        hint: "Three short lines shown at the top of the story. Leave empty to hide the box."
+        fields:
+          - { label: "What happened", name: "whatHappened", widget: "text", required: false }
+          - { label: "Why it matters", name: "whyItMatters", widget: "text", required: false }
+          - { label: "What's next", name: "whatsNext", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

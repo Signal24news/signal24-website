@@ -10,7 +10,8 @@ import {
 import { formatDateTime } from '@/lib/format';
 import { ArticleCard } from '@/components/ArticleCard';
 import { ShareButtons } from '@/components/ShareButtons';
-import { CATEGORIES, SITE } from '@/lib/constants';
+import { CATEGORIES, SITE, findAuthor } from '@/lib/constants';
+import { SignalBox } from '@/components/SignalBox';
 
 export const dynamicParams = false;
 
@@ -34,7 +35,7 @@ export async function generateMetadata(
       title: article.title,
       description: article.excerpt,
       publishedTime: article.date,
-      authors: [article.author],
+      authors: [findAuthor(article.author)?.name ?? article.author],
       images: [{ url: article.image, width: 1200, height: 630, alt: article.imageAlt ?? article.title }],
     },
     twitter: {
@@ -53,6 +54,8 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   const related = await getRelatedArticles(article);
   const catName = CATEGORIES.find((c) => c.slug === article.category)?.name ?? article.category;
   const url = `${SITE.url}/article/${article.slug}`;
+  const author = findAuthor(article.author);
+  const authorName = author?.name ?? article.author;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -61,11 +64,15 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     image: [article.image],
     datePublished: article.date,
     dateModified: article.date,
-    author: [{ '@type': 'Person', name: article.author }],
+    author: [
+      author
+        ? { '@type': 'Person', name: author.name, url: `${SITE.url}/author/${author.slug}`, jobTitle: author.role }
+        : { '@type': 'Person', name: article.author },
+    ],
     publisher: {
       '@type': 'Organization',
       name: SITE.name,
-      logo: { '@type': 'ImageObject', url: `${SITE.url}/icon.png` },
+      logo: { '@type': 'ImageObject', url: SITE.logo, width: 512, height: 512 },
     },
     mainEntityOfPage: url,
     description: article.excerpt,
@@ -113,16 +120,37 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-neutral-200 py-4 text-sm dark:border-neutral-800">
           <div className="flex items-center gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand">
-              {article.author
-                .split(' ')
-                .map((n) => n[0])
-                .join('')
-                .slice(0, 2)
-                .toUpperCase()}
-            </span>
+            {author ? (
+              <Image
+                src={author.image}
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-full object-cover"
+              />
+            ) : (
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand">
+                {authorName
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase()}
+              </span>
+            )}
             <div>
-              <p className="font-semibold leading-tight">{article.author}</p>
+              <p className="font-semibold leading-tight">
+                {author ? (
+                  <Link href={`/author/${author.slug}`} className="hover:text-brand">
+                    {author.name}
+                  </Link>
+                ) : (
+                  authorName
+                )}
+                {author && (
+                  <span className="font-normal text-neutral-500"> · {author.role}</span>
+                )}
+              </p>
               <p className="text-xs text-neutral-500">
                 <time dateTime={article.date}>{formatDateTime(article.date)}</time>
                 <span aria-hidden> · </span>
@@ -155,6 +183,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       </figure>
 
       <div className="mx-auto mt-10 max-w-3xl px-4">
+        <SignalBox signal={article.signal} />
         <div
           className="prose-article"
           // eslint-disable-next-line react/no-danger
@@ -173,6 +202,33 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             ))}
           </div>
         )}
+
+        {author && (
+          <div className="mt-10 flex gap-4 border-t border-neutral-200 pt-8 dark:border-neutral-800">
+            <Image
+              src={author.image}
+              alt=""
+              width={56}
+              height={56}
+              className="h-14 w-14 shrink-0 rounded-full object-cover"
+            />
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">Written by</p>
+              <Link href={`/author/${author.slug}`} className="font-bold hover:text-brand">
+                {author.name}
+              </Link>
+              <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{author.shortBio}</p>
+            </div>
+          </div>
+        )}
+
+        <p className="mt-6 text-sm text-neutral-500">
+          Spotted a mistake?{' '}
+          <Link href="/corrections" className="font-medium text-brand hover:underline">
+            Tell us
+          </Link>{' '}
+          and we will fix it.
+        </p>
 
         <div className="mt-10 rounded-xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
           <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">Share this story</p>
