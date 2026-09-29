@@ -84,22 +84,17 @@ export default function AboutPage() {
             </svg>
             {SITE.email}
           </a>
-          <Link
-            href="/admin"
-            className="inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-800 transition hover:border-brand hover:text-brand dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-100"
-          >
-            Newsroom CMS →
-          </Link>
         </div>
       </section>
 
       <section className="mt-10">
         <h2 className="text-xl font-extrabold tracking-tight">Follow Signal 24</h2>
-        <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <SocialCard href={SOCIAL.facebook} name="Facebook" handle="@signal24" />
-          <SocialCard href={SOCIAL.instagram} name="Instagram" handle="@signal24" />
-          <SocialCard href={SOCIAL.twitter} name="X" handle="@signal24" />
-          <SocialCard href={SOCIAL.threads} name="Threads" handle="@signal24" />
+        <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <SocialCard href={SOCIAL.facebook} name="Facebook" handle="Signal 24" />
+          <SocialCard href={SOCIAL.instagram} name="Instagram" handle="@signal24.info" />
+          <SocialCard href={SOCIAL.twitter} name="X" handle="@Signal24info" />
+          <SocialCard href={SOCIAL.threads} name="Threads" handle="@signal24.info" />
+          <SocialCard href={SOCIAL.linkedin} name="LinkedIn" handle="Signal 24" />
         </ul>
       </section>
     </div>
