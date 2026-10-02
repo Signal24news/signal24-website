@@ -11,7 +11,7 @@ image: https://www.nasa.gov/wp-content/uploads/2023/03/iss063e002679.jpg
 imageAlt: "The Strait of Hormuz and the northern tip of Oman, seen from the
   International Space Station in April 2020. Photo: NASA"
 featured: true
-breaking: true
+breaking: false
 tags:
   - Straitofhormuz
 signal:
