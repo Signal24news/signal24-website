@@ -158,7 +158,7 @@ export function SubscribePopup({
               id="subscribe-title"
               className="mt-0.5 text-base font-extrabold leading-snug text-neutral-900 dark:text-white"
             >
-              Top stories, every morning.
+              The week&apos;s biggest stories, explained.
             </h2>
           </div>
         </div>
@@ -171,7 +171,7 @@ export function SubscribePopup({
           ) : (
             <>
               <p className="text-xs text-neutral-600 dark:text-neutral-400">
-                Free daily digest. No spam. Unsubscribe anytime.
+                Free, every Sunday. No spam. Unsubscribe anytime.
               </p>
               <form onSubmit={submit} className="mt-3 flex gap-2">
                 <input

@@ -50,9 +50,9 @@ export function NewsletterBox() {
         <div>
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-300">The Signal 24 brief</p>
           <h2 id="newsletter-title" className="mt-2 text-2xl font-extrabold tracking-tight md:text-3xl">
-            The day&apos;s biggest stories, explained.
+            The week&apos;s biggest stories, explained.
           </h2>
-          <p className="mt-2 text-sm text-white/70">Free, every morning. No spam, unsubscribe anytime.</p>
+          <p className="mt-2 text-sm text-white/70">Free, every Sunday. No spam, unsubscribe anytime.</p>
         </div>
 
         {status === 'done' ? (
