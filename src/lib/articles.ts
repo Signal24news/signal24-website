@@ -99,6 +99,19 @@ export async function getTopStories(limit = 3): Promise<Article[]> {
   return picked;
 }
 
+/**
+ * Headlines for the ticker. Real breaking stories get the red "Breaking"
+ * label. When nothing is marked breaking, the newest stories run under a
+ * neutral "Latest" label instead, so readers are never misled.
+ */
+export async function getTickerItems(): Promise<{ items: Article[]; isBreaking: boolean }> {
+  const all = await getAllArticles();
+  const breaking = all.filter((a) => a.breaking);
+  return breaking.length
+    ? { items: breaking, isBreaking: true }
+    : { items: all.slice(0, 5), isBreaking: false };
+}
+
 export async function getBreakingHeadlines(): Promise<Article[]> {
   const all = await getAllArticles();
   const breaking = all.filter((a) => a.breaking);

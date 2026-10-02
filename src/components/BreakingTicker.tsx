@@ -14,7 +14,7 @@ function estimateWidth(title: string) {
   return title.length * 7.4 + 72;
 }
 
-export function BreakingTicker({ items }: { items: Article[] }) {
+export function BreakingTicker({ items, isBreaking = true }: { items: Article[]; isBreaking?: boolean }) {
   if (!items.length) return null;
 
   // Repeat short lists so the strip is always wider than the screen,
@@ -29,14 +29,22 @@ export function BreakingTicker({ items }: { items: Article[] }) {
   const duration = Math.max(10, Math.round(width / SPEED_PX_PER_SEC));
 
   return (
-    <div className="relative overflow-hidden border-b border-red-700 bg-breaking text-white">
+    <div
+      className={`relative overflow-hidden border-b text-white ${
+        isBreaking ? 'border-red-700 bg-breaking' : 'border-[#0A1128] bg-[#0E1733]'
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-stretch">
-        <div className="relative z-10 flex shrink-0 items-center gap-2 bg-red-700 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider">
+        <div
+          className={`relative z-10 flex shrink-0 items-center gap-2 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider ${
+            isBreaking ? 'bg-red-700' : 'bg-brand'
+          }`}
+        >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inset-0 animate-ping rounded-full bg-white/70" />
+            {isBreaking && <span className="absolute inset-0 animate-ping rounded-full bg-white/70" />}
             <span className="relative h-2 w-2 rounded-full bg-white" />
           </span>
-          Breaking
+          {isBreaking ? 'Breaking' : 'Latest'}
         </div>
         <div className="relative flex-1 overflow-hidden py-1.5">
           <div

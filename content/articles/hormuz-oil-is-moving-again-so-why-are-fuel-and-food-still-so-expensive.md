@@ -5,11 +5,11 @@ excerpt: Tankers are carrying crude through the Strait of Hormuz at close to
   the Gulf's refined fuel has not come back. Here is what that means for your
   bills.
 category: business
-date: 2026-10-03T10:00:00.000+05:00
+date: 2026-10-03T02:30:00.000+05:00
 author: Saad Ali
 image: /uploads/kakariki-crude-oil-tanker.jpg
-imageAlt: "The crude oil tanker Kakariki off New Zealand, 2014. Photo: Bernard
-  Spragg / Flickr (public domain)"
+imageAlt: "The crude oil tanker Kakariki docked in New Zealand, 2014. Photo:
+  Bernard Spragg / Flickr (public domain)"
 featured: true
 breaking: false
 tags:

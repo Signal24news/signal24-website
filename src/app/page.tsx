@@ -2,16 +2,17 @@ import { BreakingTicker } from '@/components/BreakingTicker';
 import { HeroGrid } from '@/components/HeroGrid';
 import { ArticleCard } from '@/components/ArticleCard';
 import { CategorySection } from '@/components/CategorySection';
-import { getAllArticles, getBreakingHeadlines, getTopStories } from '@/lib/articles';
+import { NewsletterBox } from '@/components/NewsletterBox';
+import { getAllArticles, getTickerItems, getTopStories } from '@/lib/articles';
 import Link from 'next/link';
 import { MORE_CATEGORIES, PRIMARY_CATEGORIES, SITE } from '@/lib/constants';
 
 export const revalidate = 600;
 
 export default async function HomePage() {
-  const [all, breaking, top] = await Promise.all([
+  const [all, ticker, top] = await Promise.all([
     getAllArticles(),
-    getBreakingHeadlines(),
+    getTickerItems(),
     getTopStories(3),
   ]);
 
@@ -31,11 +32,11 @@ export default async function HomePage() {
   }
 
   const topSlugs = new Set(top.map((a) => a.slug));
-  const latest = all.filter((a) => !topSlugs.has(a.slug)).slice(0, 8);
+  const latest = all.filter((a) => !topSlugs.has(a.slug)).slice(0, 4);
 
   return (
     <>
-      <BreakingTicker items={breaking} />
+      <BreakingTicker items={ticker.items} isBreaking={ticker.isBreaking} />
 
       <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
         <section aria-labelledby="top-stories">
@@ -63,13 +64,16 @@ export default async function HomePage() {
           </section>
         )}
 
-        {PRIMARY_CATEGORIES.map((c) => (
-          <CategorySection
-            key={c.slug}
-            category={c}
-            articles={all.filter((a) => a.category === c.slug)}
-          />
-        ))}
+        {/* Main sections. A section is hidden until it has a story, and stories
+            already shown in the top grid are skipped so nothing repeats. */}
+        {PRIMARY_CATEGORIES.map((c) => {
+          const inCat = all.filter((a) => a.category === c.slug);
+          const fresh = inCat.filter((a) => !topSlugs.has(a.slug));
+          if (fresh.length === 0) return null;
+          return <CategorySection key={c.slug} category={c} articles={fresh} />;
+        })}
+
+        <NewsletterBox />
 
         <section aria-labelledby="more-sections" className="mt-12 rounded-xl bg-neutral-50 p-5 md:p-6 dark:bg-neutral-900">
           <h2 id="more-sections" className="text-sm font-bold uppercase tracking-wider text-neutral-500">

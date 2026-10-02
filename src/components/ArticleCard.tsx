@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Article } from '@/lib/types';
-import { formatDate } from '@/lib/format';
+import { TimeAgo } from './TimeAgo';
 import { CATEGORIES } from '@/lib/constants';
 
 type Variant = 'default' | 'compact' | 'list';
@@ -29,7 +29,7 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
           <h3 className="clamp-2 mt-0.5 text-sm font-semibold leading-snug text-neutral-900 group-hover:text-brand dark:text-white">
             {article.title}
           </h3>
-          <p className="mt-1 text-[11px] text-neutral-500">{formatDate(article.date)}</p>
+          <p className="mt-1 text-[11px] text-neutral-500"><TimeAgo date={article.date} /></p>
         </div>
       </Link>
     );
@@ -60,7 +60,7 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
           <p className="clamp-2 text-sm text-neutral-600 dark:text-neutral-400">{article.excerpt}</p>
         )}
         <div className="mt-auto flex items-center gap-2 pt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
-          <time dateTime={article.date}>{formatDate(article.date)}</time>
+          <TimeAgo date={article.date} />
           <span aria-hidden>·</span>
           <span>{article.readingTime}</span>
         </div>
