@@ -7,10 +7,9 @@ excerpt: Iran's foreign minister met Qatari mediators in New York as Tehran
 category: middle-east
 date: 2026-09-29T15:38:00.000+05:00
 author: Saad Ali
-image: /uploads/hormuz-oil-exports.png
-imageAlt: "Graphic: Signal 24. Crude exports from major Middle East producers
-  fell from 18.8 million barrels a day in February to 12.8 million in
-  September."
+image: https://www.nasa.gov/wp-content/uploads/2023/03/iss063e002679.jpg
+imageAlt: "The Strait of Hormuz and the northern tip of Oman, seen from the
+  International Space Station in April 2020. Photo: NASA"
 featured: true
 breaking: true
 tags:
@@ -50,6 +49,10 @@ Trump has also dismissed US media reports that his administration offered Iran s
 Before the war, around a fifth of the world's oil and gas passed through the Strait of Hormuz. Iran closed it after the US and Israel launched their offensive on February 28, and attacks on commercial ships have kept traffic low. Crude prices rose above $100 a barrel.
 
 Some oil is moving again. Crude exports from the region's major producers rose to 12.8 million barrels a day in September, the highest level since the war began. That is still well below the 18.8 million barrels a day shipped in February.
+
+![Bar chart: crude exports from major Middle East producers fell from 18.8 million barrels a day in February to 12.8 million in September.](/uploads/hormuz-oil-exports.png)
+
+*Graphic: Signal 24. Crude exports from major Middle East producers, barrels per day. Source: Al Jazeera.*
 
 ## Who is in the middle
 
