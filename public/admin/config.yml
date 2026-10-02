@@ -48,6 +48,9 @@ collections:
       - label: "Middle East"
         field: category
         pattern: middle-east
+      - label: "Business"
+        field: category
+        pattern: business
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "1–2 sentence summary. Used for cards, social shares, and SEO." }
@@ -67,7 +70,7 @@ collections:
       - { label: "Author", name: "author", widget: "string", default: "Saad Ali", hint: "Use the exact name from the author profile, e.g. Saad Ali." }
       - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }
-      - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false, hint: "The 3 newest featured stories fill the top of the homepage. The newest one gets the big slot." }
       - { label: "Breaking news", name: "breaking", widget: "boolean", default: false }
       - { label: "Tags", name: "tags", widget: "list", required: false, default: [] }
       - label: "Signal Box"

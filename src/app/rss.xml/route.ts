@@ -13,7 +13,7 @@ export async function GET() {
     language: 'en',
     pubDate: new Date().toUTCString(),
     ttl: 60,
-    image_url: `${SITE.url}/icon.png`,
+    image_url: `${SITE.url}/icon-512.png`,
     custom_namespaces: { content: 'http://purl.org/rss/1.0/modules/content/' },
   });
 

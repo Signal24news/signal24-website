@@ -25,6 +25,18 @@ export const CATEGORIES = [
 
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 
+/** The three main sections. Shown in the top nav and as blocks on the homepage. */
+export const PRIMARY_CATEGORY_SLUGS: CategorySlug[] = ['world', 'middle-east', 'business'];
+
+export const PRIMARY_CATEGORIES = CATEGORIES.filter((c) =>
+  PRIMARY_CATEGORY_SLUGS.includes(c.slug),
+);
+
+/** Everything else lives under the "More" menu. */
+export const MORE_CATEGORIES = CATEGORIES.filter(
+  (c) => !PRIMARY_CATEGORY_SLUGS.includes(c.slug),
+);
+
 export const SOCIAL = {
   facebook: 'https://www.facebook.com/share/1Bpko7sgpb/',
   instagram: 'https://www.instagram.com/signal24.info',

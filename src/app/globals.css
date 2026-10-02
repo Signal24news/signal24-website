@@ -85,7 +85,18 @@ body {
 .marquee-track {
   display: inline-flex;
   white-space: nowrap;
-  animation: marquee 40s linear infinite;
+  animation: marquee var(--marquee-duration, 25s) linear infinite;
+  will-change: transform;
+}
+/* Let readers stop the ticker to read or click a headline */
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-duration: calc(var(--marquee-duration, 25s) * 3);
+  }
 }
 @keyframes marquee {
   0% { transform: translateX(0); }

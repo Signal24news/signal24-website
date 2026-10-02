@@ -84,6 +84,21 @@ export async function getFeaturedArticle(): Promise<Article | null> {
   return all.find((a) => a.featured) ?? all[0] ?? null;
 }
 
+/**
+ * Stories for the homepage top grid. Featured stories come first (newest
+ * first), then the latest stories fill any empty slots.
+ */
+export async function getTopStories(limit = 3): Promise<Article[]> {
+  const all = await getAllArticles();
+  const featured = all.filter((a) => a.featured);
+  const picked = featured.slice(0, limit);
+  for (const a of all) {
+    if (picked.length >= limit) break;
+    if (!picked.includes(a)) picked.push(a);
+  }
+  return picked;
+}
+
 export async function getBreakingHeadlines(): Promise<Article[]> {
   const all = await getAllArticles();
   const breaking = all.filter((a) => a.breaking);
