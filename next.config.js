@@ -17,9 +17,11 @@ const nextConfig = {
   },
   experimental: {
     scrollRestoration: true,
-    // /verify reads certificate files at request time, so ship them with the function.
+    // Pages rendered on request read these content files at runtime, so ship
+    // them with the serverless functions.
     outputFileTracingIncludes: {
-      '/verify': ['./content/certificates/**/*'],
+      '/verify': ['./content/certificates/**/*', './content/authors/**/*', './content/settings/**/*'],
+      '/search': ['./content/authors/**/*', './content/settings/**/*'],
     },
   },
 };

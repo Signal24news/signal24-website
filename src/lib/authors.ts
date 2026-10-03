@@ -11,11 +11,17 @@ let cache: Author[] | null = null;
 export function getAuthors(): Author[] {
   if (cache) return cache;
   if (!fs.existsSync(AUTHORS_DIR)) return [];
+  // Note: never let one bad file take the whole site down.
   const authors = fs
     .readdirSync(AUTHORS_DIR)
     .filter((f) => f.endsWith('.json'))
     .map((f) => {
-      const data = JSON.parse(fs.readFileSync(path.join(AUTHORS_DIR, f), 'utf8')) as Partial<Author>;
+      let data: Partial<Author> = {};
+      try {
+        data = JSON.parse(fs.readFileSync(path.join(AUTHORS_DIR, f), 'utf8')) as Partial<Author>;
+      } catch {
+        return null;
+      }
       const slug = (data.slug || f.replace(/\.json$/, '')).trim();
       return {
         slug,
@@ -29,7 +35,7 @@ export function getAuthors(): Author[] {
         order: typeof data.order === 'number' ? data.order : 100,
       } satisfies Author;
     })
-    .filter((a) => a.name && a.slug)
+    .filter((a): a is NonNullable<typeof a> => a !== null && Boolean(a.name && a.slug))
     .sort((a, b) => (a.order ?? 100) - (b.order ?? 100) || a.name.localeCompare(b.name));
   cache = authors;
   return authors;
@@ -46,6 +52,17 @@ export function findAuthor(name: string | undefined): Author | undefined {
   return getAuthors().find((a) => a.name.toLowerCase() === n);
 }
 
+const FALLBACK_FOUNDER: Author = {
+  slug: 'saad-ali',
+  name: 'Saad Ali',
+  role: 'Founder & Editor',
+  image: '/team/saad-ali.jpg',
+  shortBio: 'Saad Ali is the founder and editor of Signal 24.',
+  bio: [],
+  email: 'news@signal24.info',
+};
+
+/** The founder profile. Falls back to a built-in copy so no page can crash if the file is missing. */
 export function getFounder(): Author {
-  return getAuthors()[0];
+  return getAuthors()[0] ?? FALLBACK_FOUNDER;
 }
