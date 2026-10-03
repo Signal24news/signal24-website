@@ -99,6 +99,7 @@ const organizationJsonLd = {
     { '@type': 'ContactPoint', contactType: 'newsroom', email: SITE.email },
     { '@type': 'ContactPoint', contactType: 'news tips', email: SITE.tipsEmail },
     { '@type': 'ContactPoint', contactType: 'corrections', email: SITE.correctionsEmail },
+    { '@type': 'ContactPoint', contactType: 'careers', email: SITE.careersEmail },
   ],
 };
 

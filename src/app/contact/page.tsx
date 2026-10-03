@@ -21,6 +21,11 @@ const CHANNELS = [
     text: 'Found a mistake in one of our stories? Tell us which story and what is wrong. We review every request.',
   },
   {
+    label: 'Internships and careers',
+    email: SITE.careersEmail,
+    text: 'Questions about the Signal 24 Newsroom Internship, applications or certificates.',
+  },
+  {
     label: 'General, partnerships and advertising',
     email: SITE.email,
     text: 'Questions, feedback, collaboration ideas or advertising enquiries.',

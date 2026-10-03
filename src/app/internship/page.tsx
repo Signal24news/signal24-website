@@ -289,15 +289,15 @@ export default function InternshipPage() {
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             This is an unpaid, remote internship. There is no application fee, ever. If anyone asks
             you for money in Signal 24&apos;s name, report it to{' '}
-            <a href={`mailto:${SITE.email}`} className="font-semibold text-brand hover:underline">
-              {SITE.email}
+            <a href={`mailto:${SITE.careersEmail}`} className="font-semibold text-brand hover:underline">
+              {SITE.careersEmail}
             </a>
             .
           </p>
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             Applications close on {applyBy}. Questions? Write to{' '}
-            <a href={`mailto:${SITE.email}`} className="font-semibold text-brand hover:underline">
-              {SITE.email}
+            <a href={`mailto:${SITE.careersEmail}`} className="font-semibold text-brand hover:underline">
+              {SITE.careersEmail}
             </a>
             .
           </p>

@@ -7,6 +7,7 @@ export const SITE = {
   email: 'news@signal24.info',
   tipsEmail: 'tips@signal24.info',
   correctionsEmail: 'corrections@signal24.info',
+  careersEmail: 'careers@signal24.info',
   locale: 'en_US',
   twitterHandle: '@Signal24info',
   logo: 'https://signal24.info/icon-512.png',

@@ -60,8 +60,8 @@ export default function VerifyPage({ searchParams }: { searchParams: { id?: stri
           <p className="mt-2 text-sm text-red-700/80 dark:text-red-300/80">
             We could not find a certificate with the ID <span className="font-mono">{id}</span>. Check
             the ID and try again. If you think this is a mistake, write to{' '}
-            <a href={`mailto:${SITE.email}`} className="underline">
-              {SITE.email}
+            <a href={`mailto:${SITE.careersEmail}`} className="underline">
+              {SITE.careersEmail}
             </a>
             .
           </p>
@@ -74,8 +74,8 @@ export default function VerifyPage({ searchParams }: { searchParams: { id?: stri
           <p className="mt-2 text-sm text-amber-800/80 dark:text-amber-300/80">
             Certificate <span className="font-mono">{cert.id}</span> is no longer valid. For details,
             write to{' '}
-            <a href={`mailto:${SITE.email}`} className="underline">
-              {SITE.email}
+            <a href={`mailto:${SITE.careersEmail}`} className="underline">
+              {SITE.careersEmail}
             </a>
             .
           </p>
