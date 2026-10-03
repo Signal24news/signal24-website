@@ -131,3 +131,4 @@ That's it. Decap CMS, RSS, sitemap, OG tags, and dark mode all work out of the b
 ## License
 
 © 2026 Signal 24. All rights reserved.
+
