@@ -55,31 +55,11 @@ export type Author = {
   bio: string[];
   linkedin?: string;
   email?: string;
+  /** Lower numbers are listed first. The founder is 1. */
+  order?: number;
 };
 
-export const AUTHORS: Author[] = [
-  {
-    slug: 'saad-ali',
-    name: 'Saad Ali',
-    role: 'Founder & Editor',
-    image: '/team/saad-ali.jpg',
-    shortBio:
-      'Saad Ali is the founder and editor of Signal 24. He writes about geopolitics, the Middle East and the stories shaping the world.',
-    bio: [
-      'Saad Ali is the founder and editor of Signal 24. He studied Communication and Media Studies and has spent the last four years working in news and digital media.',
-      'He started Signal 24 because keeping up with world news had become tiring. Big stories arrive as a flood of alerts, hot takes and half-finished updates, and readers end up knowing that something happened without knowing why it matters. Signal 24 is his attempt to fix that, one clear story at a time.',
-      'He writes mostly about geopolitics, the Middle East and the way global events reach ordinary people.',
-    ],
-    linkedin: '',
-    email: 'news@signal24.info',
-  },
-];
-
+// Author profiles now live in content/authors/*.json and are edited from the
+// CMS (/admin > Authors). Read them on the server with getAuthors() from
+// '@/lib/authors'.
 export const DEFAULT_AUTHOR_SLUG = 'saad-ali';
-
-/** Match a free-text author name from an article to a known author profile. */
-export function findAuthor(name: string | undefined): Author | undefined {
-  if (!name) return undefined;
-  const n = name.toLowerCase();
-  return AUTHORS.find((a) => n.startsWith(a.name.toLowerCase()));
-}

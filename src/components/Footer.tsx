@@ -55,6 +55,7 @@ export function Footer() {
               {[
                 { href: '/about', label: 'About' },
                 { href: '/contact', label: 'Contact' },
+                { href: '/internship', label: 'Internship' },
                 { href: '/editorial-policy', label: 'Editorial Policy' },
                 { href: '/corrections', label: 'Corrections' },
                 { href: '/privacy-policy', label: 'Privacy Policy' },

@@ -29,7 +29,11 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
           <h3 className="clamp-2 mt-0.5 text-sm font-semibold leading-snug text-neutral-900 group-hover:text-brand dark:text-white">
             {article.title}
           </h3>
-          <p className="mt-1 text-[11px] text-neutral-500"><TimeAgo date={article.date} /></p>
+          <p className="mt-1 text-[11px] text-neutral-500">
+            <span className="font-medium text-neutral-700 dark:text-neutral-300">{article.author}</span>
+            <span aria-hidden> · </span>
+            <TimeAgo date={article.date} />
+          </p>
         </div>
       </Link>
     );
@@ -59,7 +63,9 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
         {variant !== 'compact' && (
           <p className="clamp-2 text-sm text-neutral-600 dark:text-neutral-400">{article.excerpt}</p>
         )}
-        <div className="mt-auto flex items-center gap-2 pt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
+        <div className="mt-auto flex flex-wrap items-center gap-2 pt-2 text-[11px] text-neutral-500 dark:text-neutral-400">
+          <span className="font-semibold text-neutral-700 dark:text-neutral-200">{article.author}</span>
+          <span aria-hidden>·</span>
           <TimeAgo date={article.date} />
           <span aria-hidden>·</span>
           <span>{article.readingTime}</span>

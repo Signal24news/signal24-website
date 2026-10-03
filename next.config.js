@@ -17,6 +17,10 @@ const nextConfig = {
   },
   experimental: {
     scrollRestoration: true,
+    // /verify reads certificate files at request time, so ship them with the function.
+    outputFileTracingIncludes: {
+      '/verify': ['./content/certificates/**/*'],
+    },
   },
 };
 

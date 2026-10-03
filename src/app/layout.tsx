@@ -5,7 +5,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { SubscribePopup } from '@/components/SubscribePopup';
-import { SITE, SOCIAL, AUTHORS } from '@/lib/constants';
+import { SITE, SOCIAL } from '@/lib/constants';
+import { getFounder } from '@/lib/authors';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -88,7 +89,7 @@ const organizationJsonLd = {
   logo: { '@type': 'ImageObject', url: SITE.logo, width: 512, height: 512 },
   email: SITE.email,
   foundingDate: SITE.founded,
-  founder: { '@type': 'Person', name: AUTHORS[0].name, url: `${SITE.url}/author/${AUTHORS[0].slug}` },
+  founder: { '@type': 'Person', name: getFounder().name, url: `${SITE.url}/author/${getFounder().slug}` },
   sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.twitter, SOCIAL.threads, SOCIAL.linkedin],
   publishingPrinciples: `${SITE.url}/editorial-policy`,
   correctionsPolicy: `${SITE.url}/corrections`,

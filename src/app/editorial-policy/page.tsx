@@ -16,7 +16,7 @@ export default function EditorialPolicyPage() {
       eyebrow="Standards"
       title="Editorial Policy"
       intro="This page explains how we decide what to cover, how we check it and what we do when we get it wrong. It is the standard we hold ourselves to on every story."
-      updated="29 September 2026"
+      updated="3 October 2026"
       current="/editorial-policy"
     >
       <h2>Our mission</h2>
@@ -28,9 +28,9 @@ export default function EditorialPolicyPage() {
 
       <h2>Who is responsible</h2>
       <p>
-        Signal 24 is currently run by its founder and editor, <Link href="/author/saad-ali">Saad Ali</Link>,
+        Signal 24 is run by its founder and editor, <Link href="/author/saad-ali">Saad Ali</Link>,
         who is responsible for everything we publish. Every story carries the name of the person
-        who wrote it. As we grow and add contributors, they will follow this same policy.
+        who wrote it, and every contributor follows this same policy.
       </p>
 
       <h2 id="verification">Sourcing and verification</h2>
@@ -81,13 +81,25 @@ export default function EditorialPolicyPage() {
 
       <h2>How we use AI</h2>
       <p>
-        We use AI tools to help with research, translation, summarising long documents and early
-        drafts. AI does not decide what we publish. A person edits, fact checks and approves every
+        We use AI tools to help with research, translation and summarising long documents. AI does
+        not decide what we publish. A person edits, fact checks and approves every
         story, and that person&apos;s name is on it. We do not publish AI-generated quotes, and we
         do not use AI to create fake photos of real events.
       </p>
       <p>
         When we use an AI-generated illustration, it is labelled as one in the caption.
+      </p>
+
+      <h2 id="contributors">Contributors and interns</h2>
+      <p>
+        Signal 24 works with contributing writers and interns. Their stories go through the same
+        editing and fact-checking as every other piece, and are approved by a named editor before
+        publication.
+      </p>
+      <p>
+        Contributors and interns write their own drafts. They may use AI tools for research and
+        translation, but not to write the story. Every contributor has an author page that lists
+        their published work.
       </p>
 
       <h2>Images and graphic content</h2>

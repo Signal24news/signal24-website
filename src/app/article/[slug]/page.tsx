@@ -10,7 +10,8 @@ import {
 import { formatDateTime } from '@/lib/format';
 import { ArticleCard } from '@/components/ArticleCard';
 import { ShareButtons } from '@/components/ShareButtons';
-import { CATEGORIES, SITE, findAuthor } from '@/lib/constants';
+import { CATEGORIES, SITE } from '@/lib/constants';
+import { findAuthor } from '@/lib/authors';
 import { SignalBox } from '@/components/SignalBox';
 
 export const dynamicParams = false;

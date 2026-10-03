@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/articles';
-import { AUTHORS, CATEGORIES, SITE } from '@/lib/constants';
+import { CATEGORIES, SITE } from '@/lib/constants';
+import { getAuthors } from '@/lib/authors';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getAllArticles();
@@ -14,7 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE.url}/corrections`, lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
     { url: `${SITE.url}/privacy-policy`, lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
-    ...AUTHORS.map((a) => ({
+    { url: `${SITE.url}/internship`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
+    ...getAuthors().map((a) => ({
       url: `${SITE.url}/author/${a.slug}`,
       lastModified: now,
       changeFrequency: 'weekly' as const,

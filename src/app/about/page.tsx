@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AUTHORS, SITE, SOCIAL } from '@/lib/constants';
+import { SITE, SOCIAL } from '@/lib/constants';
+import { getFounder } from '@/lib/authors';
 
 export const metadata: Metadata = {
   title: 'About Signal 24',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
 };
 
-const founder = AUTHORS[0];
+const founder = getFounder();
 
 export default function AboutPage() {
   return (

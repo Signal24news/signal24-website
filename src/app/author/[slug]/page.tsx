@@ -3,16 +3,17 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ArticleCard } from '@/components/ArticleCard';
 import { getArticlesByAuthorName } from '@/lib/articles';
-import { AUTHORS, SITE } from '@/lib/constants';
+import { SITE } from '@/lib/constants';
+import { getAuthors, getAuthorBySlug } from '@/lib/authors';
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return AUTHORS.map((a) => ({ slug: a.slug }));
+  return getAuthors().map((a) => ({ slug: a.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const author = AUTHORS.find((a) => a.slug === params.slug);
+  const author = getAuthorBySlug(params.slug);
   if (!author) return {};
   return {
     title: `${author.name}, ${author.role}`,
@@ -23,7 +24,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 export default async function AuthorPage({ params }: { params: { slug: string } }) {
-  const author = AUTHORS.find((a) => a.slug === params.slug);
+  const author = getAuthorBySlug(params.slug);
   if (!author) notFound();
 
   const articles = await getArticlesByAuthorName(author.name);

@@ -127,6 +127,6 @@ export async function getRelatedArticles(article: Article, limit = 3): Promise<A
 
 export async function getArticlesByAuthorName(name: string): Promise<Article[]> {
   const all = await getAllArticles();
-  const n = name.toLowerCase();
-  return all.filter((a) => a.author.toLowerCase().startsWith(n));
+  const n = name.trim().toLowerCase();
+  return all.filter((a) => a.author.trim().toLowerCase() === n);
 }

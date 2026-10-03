@@ -67,7 +67,7 @@ collections:
           - { label: "Explainers", value: "explainers" }
         default: "world"
       - { label: "Publish date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "Saad Ali", hint: "Use the exact name from the author profile, e.g. Saad Ali." }
+      - { label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "name", display_fields: ["name", "role"], default: "Saad Ali", hint: "Pick the writer. Add new writers under Authors first." }
       - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }
       - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false, hint: "The 3 newest featured stories fill the top of the homepage. The newest one gets the big slot." }
@@ -84,3 +84,61 @@ collections:
           - { label: "Why it matters", name: "whyItMatters", widget: "text", required: false }
           - { label: "What's next", name: "whatsNext", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "authors"
+    label: "Authors"
+    label_singular: "Author"
+    folder: "content/authors"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    identifier_field: "name"
+    slug: "{{fields.slug}}"
+    summary: "{{name}} ({{role}})"
+    sortable_fields: ['name', 'order']
+    fields:
+      - { label: "Full name", name: "name", widget: "string", hint: "Exactly as it should appear on stories, e.g. Ayesha Khan." }
+      - { label: "URL slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. ayesha-khan"], hint: "Used in the profile link: signal24.info/author/ayesha-khan. Do not change it after publishing." }
+      - { label: "Role", name: "role", widget: "string", default: "Newsroom Intern", hint: "e.g. Founder & Editor, Contributing Writer, Newsroom Intern" }
+      - { label: "Photo", name: "image", widget: "image", required: false, hint: "Square headshot, at least 400x400." }
+      - { label: "Short bio", name: "shortBio", widget: "text", hint: "One or two sentences. Shown at the top of the profile and in search results." }
+      - { label: "Full bio (paragraphs)", name: "bio", widget: "list", required: false, field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "Public email", name: "email", widget: "string", required: false, hint: "Leave empty for interns unless they want it public." }
+      - { label: "Sort order", name: "order", widget: "number", default: 50, value_type: "int", hint: "Lower numbers are listed first. Founder is 1." }
+
+  - name: "certificates"
+    label: "Certificates"
+    label_singular: "Certificate"
+    folder: "content/certificates"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
+    summary: "{{id}} - {{name}}"
+    fields:
+      - { label: "Certificate ID", name: "id", widget: "string", pattern: ['^S24-[A-Z0-9-]+$', "Use the format S24-INT-2026-001"], hint: "Printed on the certificate. Format: S24-INT-2026-001" }
+      - { label: "Full name", name: "name", widget: "string" }
+      - { label: "Program", name: "program", widget: "string", default: "Signal 24 Newsroom Internship" }
+      - { label: "Cohort", name: "cohort", widget: "string", default: "Cohort 1" }
+      - { label: "Desk", name: "desk", widget: "string", required: false }
+      - { label: "Start date", name: "startDate", widget: "datetime", date_format: "D MMMM YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "End date", name: "endDate", widget: "datetime", date_format: "D MMMM YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Issued on", name: "issued", widget: "datetime", date_format: "D MMMM YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Status", name: "status", widget: "select", options: ["valid", "revoked"], default: "valid" }
+      - { label: "Author profile slug", name: "authorSlug", widget: "string", required: false, hint: "Optional. e.g. ayesha-khan, to link to their published work." }
+
+  - name: "settings"
+    label: "Site settings"
+    editor: { preview: false }
+    files:
+      - name: "internship"
+        label: "Internship page"
+        file: "content/settings/internship.json"
+        fields:
+          - { label: "Applications open", name: "open", widget: "boolean", default: true, hint: "Turn off after the deadline. The Apply buttons will say applications are closed." }
+          - { label: "Google Form link", name: "formUrl", widget: "string", required: false, hint: "Paste the full Google Form link. Until this is filled, the Apply buttons say 'Applications open soon'." }
+          - { label: "Apply by (text)", name: "applyBy", widget: "string", default: "24 October 2026" }

@@ -118,12 +118,8 @@ function Tile({ article, size }: { article: Article; size: 'lead' | 'half' | 'si
           )}
 
           <div className="mt-2.5 flex flex-wrap items-center gap-2 text-[11px] text-white/75 md:text-xs">
-            {big && (
-              <>
-                <span className="font-semibold text-white">{article.author}</span>
-                <span aria-hidden>·</span>
-              </>
-            )}
+            <span className="font-semibold text-white">{article.author}</span>
+            <span aria-hidden>·</span>
             <TimeAgo date={article.date} />
             {big && (
               <>
