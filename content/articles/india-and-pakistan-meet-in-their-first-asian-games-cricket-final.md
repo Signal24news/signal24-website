@@ -6,11 +6,11 @@ excerpt: India and Pakistan play for Asian Games gold in Japan on Saturday, the
   got there, who to watch, and why the build-up is about more than cricket.
 category: sports
 date: 2026-10-03T03:00:00.000+05:00
+updated: 2026-10-25T02:20:00.000+05:00
 author: Saad Ali
 image: /uploads/india-pakistan-asian-games-final.jpg
-imageAlt: "A cricket bat and ball under stadium floodlights. Image: Signal 24 /
-  Canva"
-featured: true
+imageAlt: "A cricket bat and ball under stadium floodlights. Image: Signal 24 / Canva"
+featured: false
 breaking: false
 tags:
   - Cricket
@@ -23,10 +23,12 @@ signal:
   whyItMatters: It is the biggest rivalry in cricket, played for a multi-sport
     gold medal, at a time when Indian players have stopped shaking hands with
     their Pakistani opponents.
-  whatsNext: The gold medal match starts at 9:30am Pakistan time (10am in
-    India) at Korogi Sports Park in Nisshin, Japan. Sri Lanka and Bangladesh
-    play for bronze earlier in the day.
+  whatsNext: The gold medal match starts at 9:30am Pakistan time (10am in India)
+    at Korogi Sports Park in Nisshin, Japan. Sri Lanka and Bangladesh play for
+    bronze earlier in the day.
 ---
+**Update, 3 October:** India beat Pakistan by 19 runs in the final in Nisshin to retain the Asian Games men's cricket gold, [Gulf News reported](https://gulfnews.com/sport/india-beat-pakistan-to-win-second-asian-games-gold-medal-in-mens-cricket-1.500696903). Batting first, India made 211 for 6, led by Abhishek Sharma's 61 off 28 balls and an unbeaten 51 from Tilak Varma. Pakistan's Hasan Nawaz hit 96 off 51 balls, but Pakistan finished on 192 for 6, [according to Business Today](https://www.businesstoday.in/sports/story/asian-games-2026-india-beats-pakistan-by-19-runs-clinches-gold-in-mens-cricket-final-559306-2026-10-03). Our preview from before the match is below.
+
 India and Pakistan will play for an Asian Games gold medal in cricket for the first time on Saturday, in a men's T20 final at Korogi Sports Park in Nisshin, near Nagoya in Japan.
 
 The match starts at 1:30pm local time, which is 10am in India and 9:30am in Pakistan, according to [Esquire India](https://www.esquireindia.co.in/culture/sports/india-vs-pakistan-asian-games-2026-final-date-time-squads-when-and-where-to-watch-cricket-live-streaming-sony-sports-jiohotstar-october-3) and [Outlook India](https://www.outlookindia.com/sports/cricket/india-vs-pakistan-gold-medal-sri-lanka-vs-bangladesh-bronze-match-cricket-asian-games-2026).
@@ -63,4 +65,3 @@ India go in as favourites after the way they flattened Sri Lanka. The pitch at K
 
 The bronze medal match between Sri Lanka and Bangladesh is played first, at 5am Pakistan time.
 
-*We will update this story with the result.*
