@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
+import { AuthorAvatar } from '@/components/AuthorAvatar';
 import type { Metadata } from 'next';
 import { ArticleCard } from '@/components/ArticleCard';
 import { getArticlesByAuthorName } from '@/lib/articles';
@@ -51,16 +51,12 @@ export default async function AuthorPage({ params }: { params: { slug: string } 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <header className="flex flex-col gap-6 border-b border-neutral-200 pb-10 sm:flex-row sm:items-center dark:border-neutral-800">
-        <Image
-          src={author.image}
-          alt={author.name}
-          width={144}
-          height={144}
-          priority
-          className="h-32 w-32 shrink-0 rounded-full object-cover"
-        />
+        <AuthorAvatar author={author} size={128} alt={author.name} priority className="h-32 w-32" />
         <div className="min-w-0 max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">{author.role}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-300">
+            {author.role}
+            {author.desk && <span className="text-neutral-500 dark:text-neutral-400"> · {author.desk} desk</span>}
+          </p>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight md:text-4xl">{author.name}</h1>
           <p className="mt-3 text-neutral-600 dark:text-neutral-300">{author.shortBio}</p>
           <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">

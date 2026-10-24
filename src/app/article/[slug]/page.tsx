@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { AuthorAvatar } from '@/components/AuthorAvatar';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import {
@@ -122,13 +123,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-neutral-200 py-4 text-sm dark:border-neutral-800">
           <div className="flex items-center gap-2">
             {author ? (
-              <Image
-                src={author.image}
-                alt=""
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-full object-cover"
-              />
+              <AuthorAvatar author={author} size={36} className="h-9 w-9" />
             ) : (
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-sm font-bold text-brand">
                 {authorName
@@ -206,13 +201,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
         {author && (
           <div className="mt-10 flex gap-4 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-            <Image
-              src={author.image}
-              alt=""
-              width={56}
-              height={56}
-              className="h-14 w-14 shrink-0 rounded-full object-cover"
-            />
+            <AuthorAvatar author={author} size={56} className="h-14 w-14" />
             <div className="min-w-0">
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">Written by</p>
               <Link href={`/author/${author.slug}`} className="font-bold hover:text-brand">

@@ -101,7 +101,9 @@ collections:
       - { label: "Full name", name: "name", widget: "string", hint: "Exactly as it should appear on stories, e.g. Ayesha Khan." }
       - { label: "URL slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. ayesha-khan"], hint: "Used in the profile link: signal24.info/author/ayesha-khan. Do not change it after publishing." }
       - { label: "Role", name: "role", widget: "string", default: "Newsroom Intern", hint: "e.g. Founder & Editor, Contributing Writer, Newsroom Intern" }
-      - { label: "Photo", name: "image", widget: "image", required: false, hint: "Square headshot, at least 400x400." }
+      - { label: "Desk", name: "desk", widget: "select", required: false, options: ["World", "Middle East", "Business & Economy", "AI & Tech", "Sports", "Fact Check & Explainers"], hint: "Shown on the profile. Leave empty for editors." }
+      - { label: "Photo", name: "image", widget: "image", required: false, hint: "Optional. Square headshot, at least 400x400. Leave empty to use the Signal 24 avatar." }
+      - { label: "Avatar (only used when there is no photo)", name: "avatar", widget: "select", options: [{ label: "Female figure", value: "female" }, { label: "Male figure", value: "male" }], default: "female", required: false }
       - { label: "Short bio", name: "shortBio", widget: "text", hint: "One or two sentences. Shown at the top of the profile and in search results." }
       - { label: "Full bio (paragraphs)", name: "bio", widget: "list", required: false, field: { label: "Paragraph", name: "paragraph", widget: "text" } }
       - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }

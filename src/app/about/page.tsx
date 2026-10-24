@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { AuthorAvatar } from '@/components/AuthorAvatar';
 import Link from 'next/link';
 import { SITE, SOCIAL } from '@/lib/constants';
 import { getFounder } from '@/lib/authors';
@@ -18,7 +19,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-3xl px-4 py-12 md:py-20">
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">About us</p>
       <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:text-5xl">
-        Global news, explained.
+        Fast. True. First.
       </h1>
       <p className="mt-5 text-lg text-neutral-600 dark:text-neutral-300">
         Signal 24 is an independent digital news platform. We cover the stories moving the world,
@@ -47,12 +48,11 @@ export default function AboutPage() {
           Who runs Signal 24
         </h2>
         <div className="mt-5 flex flex-col gap-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:flex-row sm:items-start dark:border-neutral-800 dark:bg-neutral-900">
-          <Image
-            src={founder.image}
+          <AuthorAvatar
+            author={founder}
+            size={112}
             alt={`${founder.name}, ${founder.role} of Signal 24`}
-            width={128}
-            height={128}
-            className="h-28 w-28 shrink-0 rounded-full object-cover"
+            className="h-28 w-28"
           />
           <div className="min-w-0">
             <p className="text-lg font-bold">{founder.name}</p>

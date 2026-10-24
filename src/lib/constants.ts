@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Signal 24',
-  tagline: 'Global news, explained.',
+  tagline: 'Fast. True. First.',
   description:
     "Signal 24 explains the world's biggest stories, from geopolitics and the Middle East to business, AI and sports. Clear reporting, no noise.",
   url: 'https://signal24.info',
@@ -51,7 +51,14 @@ export type Author = {
   slug: string;
   name: string;
   role: string;
+  /** Photo path. Falls back to the site icon (used for SEO tags) when there is no photo. */
   image: string;
+  /** True when the writer uploaded a real photo. */
+  hasPhoto?: boolean;
+  /** Figure on the Signal 24 avatar shown when there is no photo. */
+  avatar?: 'female' | 'male';
+  /** Desk shown on the profile, e.g. World. */
+  desk?: string;
   shortBio: string;
   bio: string[];
   linkedin?: string;

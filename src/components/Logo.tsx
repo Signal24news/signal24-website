@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 /** Signal 24 logo: brand icon plus the "SIGNAL 24" wordmark, traced from the official logo. */
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({ compact = false, onDark = false }: { compact?: boolean; onDark?: boolean }) {
   return (
     <Link href="/" className="group flex items-center gap-2.5" aria-label="Signal 24 home">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/favicon.svg" alt="" width={36} height={36} className="h-9 w-9" />
-      {!compact && <Wordmark className="h-[18px] w-auto text-ink dark:text-white" />}
+      {!compact && <Wordmark className={`h-[18px] w-auto ${onDark ? 'text-white' : 'text-ink dark:text-white'}`} />}
     </Link>
   );
 }

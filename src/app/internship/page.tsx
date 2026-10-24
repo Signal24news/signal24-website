@@ -60,9 +60,8 @@ const WHO = [
 
 const STEPS = [
   'Online application',
-  'Timed writing test: we send you the facts, you write the story',
-  'Short video call',
-  'Offer letter and onboarding',
+  'Short welcome call',
+  'Orientation and your first practice article',
 ];
 
 function ApplyButton({
@@ -131,7 +130,7 @@ export default function InternshipPage() {
       <section className="bg-[#0E1733] text-white">
         <div className="mx-auto max-w-5xl px-4 py-14 md:py-20">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-300">
-            Remote · 12 weeks · November 2026 to January 2027
+            Remote · Open worldwide · 12 weeks · November 2026 to January 2027
           </p>
           <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
             Signal 24 Newsroom Internship, Cohort 1
@@ -151,7 +150,7 @@ export default function InternshipPage() {
               ['Seats', '10 to 12'],
               ['Duration', '12 weeks'],
               ['Mode', 'Remote'],
-              ['Apply by', applyBy],
+              open ? ['Apply by', applyBy] : ['Status', 'Cohort 1 is full'],
             ].map(([k, v]) => (
               <div key={k} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                 <dt className="text-[11px] font-bold uppercase tracking-wider text-white/60">{k}</dt>
@@ -159,6 +158,13 @@ export default function InternshipPage() {
               </div>
             ))}
           </dl>
+
+          {!open && (
+            <p className="mt-8 max-w-3xl rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-base text-white/90">
+              Applications for Cohort 1 closed on {applyBy}, and the cohort is now full. Thank you to
+              everyone who applied. Cohort 2 will be announced here and on our LinkedIn page in 2027.
+            </p>
+          )}
 
           <div className="mt-8">
             <ApplyButton open={open} formUrl={formUrl} />
@@ -295,7 +301,8 @@ export default function InternshipPage() {
             .
           </p>
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
-            Applications close on {applyBy}. Questions? Write to{' '}
+            {open ? `Applications close on ${applyBy}.` : `Applications for Cohort 1 closed on ${applyBy}.`}{' '}
+            Questions? Write to{' '}
             <a href={`mailto:${SITE.careersEmail}`} className="font-semibold text-brand hover:underline">
               {SITE.careersEmail}
             </a>

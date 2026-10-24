@@ -1,20 +1,25 @@
+import Link from 'next/link';
 import { BreakingTicker } from '@/components/BreakingTicker';
-import { HeroGrid } from '@/components/HeroGrid';
-import { ArticleCard } from '@/components/ArticleCard';
-import { CategorySection } from '@/components/CategorySection';
+import { HomeHero } from '@/components/HomeHero';
+import { EditorsPicks, ExplainBand, HomeSection } from '@/components/HomeSection';
 import { NewsletterBox } from '@/components/NewsletterBox';
 import { getAllArticles, getTickerItems, getTopStories } from '@/lib/articles';
-import Link from 'next/link';
-import { MORE_CATEGORIES, PRIMARY_CATEGORIES, SITE } from '@/lib/constants';
+import { CATEGORIES, SITE, type CategorySlug } from '@/lib/constants';
+import type { Article } from '@/lib/types';
 
 export const revalidate = 600;
 
+/** Homepage sections, top to bottom. A section only shows once it has a story that is not already above it. */
+const SECTIONS: { slug: CategorySlug; variant: 'feature' | 'grid'; picks?: boolean }[] = [
+  { slug: 'world', variant: 'grid' },
+  { slug: 'middle-east', variant: 'feature', picks: true },
+  { slug: 'business', variant: 'feature' },
+  { slug: 'ai-tech', variant: 'grid' },
+  { slug: 'sports', variant: 'grid' },
+];
+
 export default async function HomePage() {
-  const [all, ticker, top] = await Promise.all([
-    getAllArticles(),
-    getTickerItems(),
-    getTopStories(3),
-  ]);
+  const [all, ticker, top] = await Promise.all([getAllArticles(), getTickerItems(), getTopStories(3)]);
 
   if (!top.length) {
     return (
@@ -31,67 +36,55 @@ export default async function HomePage() {
     );
   }
 
-  const topSlugs = new Set(top.map((a) => a.slug));
-  const latest = all.filter((a) => !topSlugs.has(a.slug)).slice(0, 4);
+  const [lead, ...side] = top;
+  const used = new Set(top.map((a) => a.slug));
+  const fresh = (list: Article[]) => list.filter((a) => !used.has(a.slug));
+  const take = (list: Article[]) => {
+    list.forEach((a) => used.add(a.slug));
+    return list;
+  };
+
+  // "Latest" rail: newest stories that are not already in the top grid.
+  const latestRail = fresh(all).slice(0, 6);
+
+  // Editor's picks: featured stories that are not already in the top grid.
+  const picks = fresh(all.filter((a) => a.featured)).slice(0, 5);
+
+  const sections = SECTIONS.map((s) => {
+    const category = CATEGORIES.find((c) => c.slug === s.slug)!;
+    const max = s.variant === 'grid' ? 4 : 5;
+    const stories = take(fresh(all.filter((a) => a.category === s.slug)).slice(0, max));
+    return { ...s, category, stories };
+  });
+
+  const explained = take(
+    fresh(all.filter((a) => a.category === 'explainers' || a.category === 'fact-check')).slice(0, 3),
+  );
 
   return (
     <>
       <BreakingTicker items={ticker.items} isBreaking={ticker.isBreaking} />
 
-      <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
-        <section aria-labelledby="top-stories">
-          <h2 id="top-stories" className="sr-only">
-            Top stories
-          </h2>
-          <HeroGrid stories={top} />
-        </section>
+      <div className="mx-auto max-w-7xl px-4 pt-6 md:pt-8">
+        <HomeHero lead={lead} side={side} latest={latestRail} />
 
-        {latest.length > 0 && (
-          <section aria-labelledby="latest" className="mt-12">
-            <div className="mb-5 flex items-end justify-between">
-              <h2 id="latest" className="text-xl font-extrabold tracking-tight md:text-2xl">
-                Latest news
-              </h2>
-              <Link href="/rss.xml" className="text-xs font-semibold text-brand hover:underline">
-                RSS feed →
-              </Link>
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {latest.map((a) => (
-                <ArticleCard key={a.slug} article={a} />
-              ))}
-            </div>
-          </section>
+        {sections.map((s) =>
+          s.stories.length === 0 ? null : (
+            <HomeSection
+              key={s.slug}
+              category={s.category}
+              articles={s.stories}
+              variant={s.variant}
+              aside={s.picks && picks.length > 0 ? <EditorsPicks articles={picks} /> : undefined}
+            />
+          ),
         )}
+      </div>
 
-        {/* Main sections. A section is hidden until it has a story, and stories
-            already shown in the top grid are skipped so nothing repeats. */}
-        {PRIMARY_CATEGORIES.map((c) => {
-          const inCat = all.filter((a) => a.category === c.slug);
-          const fresh = inCat.filter((a) => !topSlugs.has(a.slug));
-          if (fresh.length === 0) return null;
-          return <CategorySection key={c.slug} category={c} articles={fresh} />;
-        })}
+      {explained.length > 0 && <ExplainBand articles={explained} />}
 
+      <div className="mx-auto max-w-7xl px-4">
         <NewsletterBox />
-
-        <section aria-labelledby="more-sections" className="mt-12 rounded-xl bg-neutral-50 p-5 md:p-6 dark:bg-neutral-900">
-          <h2 id="more-sections" className="text-sm font-bold uppercase tracking-wider text-neutral-500">
-            More sections
-          </h2>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {MORE_CATEGORIES.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/category/${c.slug}`}
-                  className="inline-block rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-sm font-semibold text-neutral-800 transition hover:border-brand hover:text-brand dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
-                >
-                  {c.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
       </div>
     </>
   );

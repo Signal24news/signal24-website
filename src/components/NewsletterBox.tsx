@@ -43,20 +43,21 @@ export function NewsletterBox() {
 
   return (
     <section
+      id="newsletter"
       aria-labelledby="newsletter-title"
-      className="mt-12 overflow-hidden rounded-2xl bg-[#0E1733] px-6 py-8 text-white md:px-10 md:py-10"
+      className="my-11 scroll-mt-28 overflow-hidden rounded-xl bg-brand-50 px-6 py-8 md:px-9 md:py-9 dark:bg-brand-900/40"
     >
       <div className="grid items-center gap-6 md:grid-cols-2">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-300">The Signal 24 brief</p>
-          <h2 id="newsletter-title" className="mt-2 text-2xl font-extrabold tracking-tight md:text-3xl">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-brand-700 dark:text-brand-300">Signal 24 Weekly</p>
+          <h2 id="newsletter-title" className="mt-2 text-2xl font-black tracking-tight md:text-[1.75rem]">
             The week&apos;s biggest stories, explained.
           </h2>
-          <p className="mt-2 text-sm text-white/70">Free, every Sunday. No spam, unsubscribe anytime.</p>
+          <p className="mt-2 text-[15px] text-neutral-600 dark:text-neutral-300">Free, every Sunday. No spam, unsubscribe anytime.</p>
         </div>
 
         {status === 'done' ? (
-          <p className="rounded-lg bg-white/10 px-4 py-3 text-sm font-medium">
+          <p className="rounded-lg bg-white px-4 py-3 text-sm font-medium dark:bg-neutral-900">
             Thanks, you&apos;re on the list. Check your inbox for a welcome email.
           </p>
         ) : (
@@ -78,17 +79,17 @@ export function NewsletterBox() {
                     setErrorMsg(null);
                   }
                 }}
-                className="min-w-0 flex-1 rounded-lg border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 outline-none focus:border-brand focus:ring-2 focus:ring-brand/40"
+                className="min-w-0 flex-1 rounded-full border border-brand-200 bg-white px-5 py-3 text-[15px] text-neutral-900 placeholder:text-neutral-500 outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white"
               />
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 disabled:opacity-60"
+                className="rounded-full bg-brand-600 px-6 py-3 text-[15px] font-bold text-white transition hover:bg-brand-700 disabled:opacity-60"
               >
                 {status === 'submitting' ? 'Signing up…' : 'Subscribe'}
               </button>
             </div>
-            {status === 'error' && errorMsg && <p className="mt-2 text-xs text-red-300">{errorMsg}</p>}
+            {status === 'error' && errorMsg && <p className="mt-2 text-xs text-red-700 dark:text-red-300">{errorMsg}</p>}
           </form>
         )}
       </div>

@@ -13,6 +13,12 @@ const nextConfig = {
       { source: '/category/world-news', destination: '/category/world', permanent: true },
       { source: '/editorial', destination: '/editorial-policy', permanent: true },
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      // Story removed on 3 Oct 2026 (it used an AI image). Send old links to Sports.
+      {
+        source: '/article/ben-stokes-retires-from-international-cricket-ending-a-defining-era-for-england',
+        destination: '/category/sports',
+        permanent: true,
+      },
     ];
   },
   experimental: {

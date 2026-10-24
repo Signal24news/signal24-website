@@ -34,7 +34,7 @@ export function BreakingTicker({ items, isBreaking = true }: { items: Article[];
         isBreaking ? 'border-red-700 bg-breaking' : 'border-[#0A1128] bg-[#0E1733]'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-stretch">
+      <div className="mx-auto flex max-w-7xl items-stretch md:px-4">
         <div
           className={`relative z-10 flex shrink-0 items-center gap-2 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider ${
             isBreaking ? 'bg-red-700' : 'bg-brand'

@@ -6,12 +6,13 @@ export function Footer() {
   const year = 2026;
 
   return (
-    <footer className="mt-20 border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
+    <footer className="mt-16 bg-[#0F0F0F] text-[#C3C7D1]">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Logo />
-            <p className="mt-4 max-w-md text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+          <div className="col-span-2">
+            <Logo onDark />
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-brand-200">{SITE.tagline}</p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed">
               {SITE.description}
             </p>
             <div className="mt-5 flex items-center gap-3">
@@ -34,13 +35,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">Sections</h3>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white">Sections</h3>
             <ul className="mt-3 space-y-2 text-sm">
               {CATEGORIES.map((c) => (
                 <li key={c.slug}>
                   <Link
                     href={`/category/${c.slug}`}
-                    className="text-neutral-700 hover:text-brand dark:text-neutral-300"
+                    className="hover:text-white hover:underline"
                   >
                     {c.name}
                   </Link>
@@ -50,12 +51,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">Signal 24</h3>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white">Signal 24</h3>
             <ul className="mt-3 space-y-2 text-sm">
               {[
                 { href: '/about', label: 'About' },
                 { href: '/contact', label: 'Contact' },
                 { href: '/internship', label: 'Internship' },
+                { href: '/verify', label: 'Verify a certificate' },
                 { href: '/editorial-policy', label: 'Editorial Policy' },
                 { href: '/corrections', label: 'Corrections' },
                 { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -63,7 +65,7 @@ export function Footer() {
                 { href: '/rss.xml', label: 'RSS feed' },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-neutral-700 hover:text-brand dark:text-neutral-300">
+                  <Link href={l.href} className="hover:text-white hover:underline">
                     {l.label}
                   </Link>
                 </li>
@@ -72,9 +74,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-neutral-200 pt-6 text-xs text-neutral-500 sm:flex-row dark:border-neutral-800">
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-[#A3A8B4] sm:flex-row">
           <p>© {year} Signal 24. Independent news. All rights reserved.</p>
-          <p>{SITE.tagline}</p>
+          <p>signal24.info</p>
         </div>
       </div>
     </footer>
@@ -96,7 +98,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-brand hover:bg-brand hover:text-white dark:border-neutral-800 dark:text-neutral-300"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-[#C3C7D1] transition hover:border-brand hover:bg-brand-600 hover:text-white"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
         {children}
