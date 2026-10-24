@@ -63,7 +63,6 @@ export function Footer() {
                 { href: '/corrections', label: 'Corrections' },
                 { href: '/privacy-policy', label: 'Privacy Policy' },
                 { href: '/terms', label: 'Terms of Use' },
-                { href: '/rss.xml', label: 'RSS feed' },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="hover:text-white hover:underline">
