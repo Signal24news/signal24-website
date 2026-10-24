@@ -55,7 +55,11 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     imageAlt: data.imageAlt ?? data.title,
     featured: Boolean(data.featured),
     breaking: Boolean(data.breaking),
-    tags: data.tags ?? [],
+    // Tags typed as one line ("Tag1 Tag2" or "Tag1, Tag2") are split into separate tags.
+    tags: (Array.isArray(data.tags) ? data.tags : data.tags ? [data.tags] : [])
+      .flatMap((t: unknown) => String(t).split(/[\s,]+/))
+      .map((t: string) => t.replace(/^#/, '').trim())
+      .filter(Boolean),
     signal:
       data.signal && (data.signal.whatHappened || data.signal.whyItMatters || data.signal.whatsNext)
         ? {
