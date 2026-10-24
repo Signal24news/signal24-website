@@ -16,7 +16,7 @@ export default function EditorialPolicyPage() {
       eyebrow="Standards"
       title="Editorial Policy"
       intro="This page explains how we decide what to cover, how we check it and what we do when we get it wrong. It is the standard we hold ourselves to on every story."
-      updated="3 October 2026"
+      updated="24 October 2026"
       current="/editorial-policy"
     >
       <h2>Our mission</h2>
@@ -81,10 +81,11 @@ export default function EditorialPolicyPage() {
 
       <h2>How we use AI</h2>
       <p>
-        We use AI tools to help with research, translation and summarising long documents. AI does
-        not decide what we publish. A person edits, fact checks and approves every
-        story, and that person&apos;s name is on it. We do not publish AI-generated quotes, and we
-        do not use AI to create fake photos of real events.
+        We use AI tools to help with research, translation, summarising long documents, and editing
+        and structuring our stories. AI does not decide what we publish. A person checks every fact
+        against the original sources, then edits and approves every story, and that person&apos;s
+        name is on it. We do not publish AI-generated quotes, and we do not use AI to create fake
+        photos of real events.
       </p>
       <p>
         When we use an AI-generated illustration, it is labelled as one in the caption.
