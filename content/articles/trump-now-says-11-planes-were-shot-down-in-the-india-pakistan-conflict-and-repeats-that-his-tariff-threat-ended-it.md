@@ -35,17 +35,17 @@ US President Donald Trump has again said he ended the 2025 conflict between Indi
 
 Speaking at a campaign rally at Florida Gulf Coast University's Alico Arena in Fort Myers on Friday, 23 October, Trump said he warned both countries that they would lose access to the US market if the fighting continued. "I'm going to put massive tariffs on both of you, 250 per cent, so you won't be able to do any business," he said, according to [PTI](https://www.tribuneindia.com/news/usa-news/trump-invokes-operation-sindoor-at-us-poll-rally-rues-nobel-snub). "Eleven planes were shot," he added, [ANI reported](https://news.webindia123.com/news/Articles/World/20261024/4514448.html).
 
-A number that keeps changing
+## A number that keeps changing
 
 Trump has told this story many times, but the figure has not stayed the same. In earlier speeches he said [seven planes](https://www.tribuneindia.com/news/world/trump-repeats-claims-of-averting-india-pakistan-war-using-tariffs-says-seven-planes-were-shot-down) were shot down, and later [eight](https://www.tribuneindia.com/news/top-headlines/now-trump-claims-8-planes-shot-down-in-india-pak-clash). He has not said whose planes they were, and the number has not been independently confirmed.
 
 India rejects Trump's account. New Delhi says the halt in military action was agreed directly between India and Pakistan on 10 May 2025, after a request from Pakistan, and not because of US pressure.
 
-"Did I get the Nobel Prize? No."
+## "Did I get the Nobel Prize? No."
 
 Trump told the crowd he had "settled eight wars" and complained that he had not been given the Nobel Peace Prize. He also said the United Nations gave him no help: "I'd never made one phone call to the United Nations."
 
-Iran, Cuba and Hormuz
+## Iran, Cuba and Hormuz
 
 Trump hinted at more military action against Iran. "We may do another little Epic Fury," he said, without giving details, [The Times of Israel reported](https://www.timesofisrael.com/liveblog_entry/trump-says-us-may-do-another-little-epic-fury-against-iran/).
 
