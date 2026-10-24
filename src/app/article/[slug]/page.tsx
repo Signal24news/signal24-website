@@ -8,13 +8,13 @@ import {
   getArticleSlugs,
   getRelatedArticles,
 } from '@/lib/articles';
-import { formatDateTime } from '@/lib/format';
 import { ArticleCard } from '@/components/ArticleCard';
 import { ShareButtons } from '@/components/ShareButtons';
 import { CATEGORIES, SITE } from '@/lib/constants';
 import { findAuthor } from '@/lib/authors';
 import { SignalBox } from '@/components/SignalBox';
 import { PreferredSource } from '@/components/PreferredSource';
+import { LocalTime } from '@/components/LocalTime';
 
 function absolute(src: string) {
   return src.startsWith('http') ? src : `${SITE.url}${src}`;
@@ -160,12 +160,12 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 )}
               </p>
               <p className="text-xs text-neutral-500">
-                <time dateTime={article.date}>{formatDateTime(article.date)}</time>
+                <LocalTime iso={article.date} />
                 {article.updated && (
                   <>
                     <span aria-hidden> · </span>
                     <span className="font-semibold text-neutral-700 dark:text-neutral-300">
-                      Updated <time dateTime={article.updated}>{formatDateTime(article.updated)}</time>
+                      Updated <LocalTime iso={article.updated} />
                     </span>
                   </>
                 )}
