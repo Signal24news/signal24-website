@@ -134,3 +134,23 @@ body {
 .prose-article .not-prose a:hover {
   text-decoration: underline;
 }
+
+/* Tables inside stories (e.g. the Claim Tracker). Scroll sideways on small screens. */
+.prose-article table {
+  @apply my-7 block w-full overflow-x-auto border-collapse text-[0.95rem] leading-snug;
+}
+.prose-article thead th {
+  @apply whitespace-nowrap border-b-2 border-[#0E1733] bg-neutral-50 px-3 py-2.5 text-left text-xs font-extrabold uppercase tracking-wider text-neutral-700 dark:border-brand-300 dark:bg-neutral-900 dark:text-neutral-200;
+}
+.prose-article td {
+  @apply border-b border-neutral-200 px-3 py-3 align-top dark:border-neutral-800;
+}
+.prose-article td:first-child {
+  @apply whitespace-nowrap font-semibold;
+}
+.prose-article td:nth-child(3) {
+  min-width: 18rem;
+}
+.prose-article tbody tr:nth-child(even) td {
+  @apply bg-neutral-50/60 dark:bg-neutral-900/40;
+}
