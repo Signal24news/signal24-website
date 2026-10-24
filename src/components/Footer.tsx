@@ -55,6 +55,7 @@ export function Footer() {
             <ul className="mt-3 space-y-2 text-sm">
               {[
                 { href: '/about', label: 'About' },
+                { href: '/team', label: 'Our newsroom' },
                 { href: '/contact', label: 'Contact' },
                 { href: '/internship', label: 'Internship' },
                 { href: '/verify', label: 'Verify a certificate' },

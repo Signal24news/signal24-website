@@ -46,6 +46,10 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     excerpt: data.excerpt ?? content.slice(0, 180).replace(/\s+/g, ' ').trim() + '…',
     category: (data.category ?? 'world') as CategorySlug,
     date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+    updated:
+      data.updated && !Number.isNaN(new Date(data.updated).getTime())
+        ? new Date(data.updated).toISOString()
+        : undefined,
     author: data.author ?? 'Saad Ali',
     image: data.image ?? '/og-default.png',
     imageAlt: data.imageAlt ?? data.title,

@@ -67,6 +67,7 @@ collections:
           - { label: "Explainers", value: "explainers" }
         default: "world"
       - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "Last updated", name: "updated", widget: "datetime", required: false, default: "", hint: "Leave empty for new stories. Set it only when you add new facts to a published story (for example the Claim Tracker)." }
       - { label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "name", display_fields: ["name", "role"], default: "Saad Ali", hint: "Pick the writer. Add new writers under Authors first." }
       - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }

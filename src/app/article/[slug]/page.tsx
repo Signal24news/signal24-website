@@ -14,6 +14,11 @@ import { ShareButtons } from '@/components/ShareButtons';
 import { CATEGORIES, SITE } from '@/lib/constants';
 import { findAuthor } from '@/lib/authors';
 import { SignalBox } from '@/components/SignalBox';
+import { PreferredSource } from '@/components/PreferredSource';
+
+function absolute(src: string) {
+  return src.startsWith('http') ? src : `${SITE.url}${src}`;
+}
 
 export const dynamicParams = false;
 
@@ -37,6 +42,9 @@ export async function generateMetadata(
       title: article.title,
       description: article.excerpt,
       publishedTime: article.date,
+      modifiedTime: article.updated ?? article.date,
+      section: CATEGORIES.find((c) => c.slug === article.category)?.name,
+      tags: article.tags,
       authors: [findAuthor(article.author)?.name ?? article.author],
       images: [{ url: article.image, width: 1200, height: 630, alt: article.imageAlt ?? article.title }],
     },
@@ -63,9 +71,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
     headline: article.title,
-    image: [article.image],
+    image: [absolute(article.image)],
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: article.updated ?? article.date,
     author: [
       author
         ? { '@type': 'Person', name: author.name, url: `${SITE.url}/author/${author.slug}`, jobTitle: author.role }
@@ -74,9 +82,13 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     publisher: {
       '@type': 'Organization',
       name: SITE.name,
+      url: SITE.url,
       logo: { '@type': 'ImageObject', url: SITE.logo, width: 512, height: 512 },
     },
-    mainEntityOfPage: url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    isAccessibleForFree: true,
+    inLanguage: 'en',
+    keywords: article.tags?.join(', ') || undefined,
     description: article.excerpt,
     articleSection: catName,
   };
@@ -149,6 +161,14 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               </p>
               <p className="text-xs text-neutral-500">
                 <time dateTime={article.date}>{formatDateTime(article.date)}</time>
+                {article.updated && (
+                  <>
+                    <span aria-hidden> · </span>
+                    <span className="font-semibold text-neutral-700 dark:text-neutral-300">
+                      Updated <time dateTime={article.updated}>{formatDateTime(article.updated)}</time>
+                    </span>
+                  </>
+                )}
                 <span aria-hidden> · </span>
                 {article.readingTime}
               </p>
@@ -220,7 +240,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           and we will fix it.
         </p>
 
-        <div className="mt-10 rounded-xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
+        <PreferredSource className="mt-10" />
+
+        <div className="mt-6 rounded-xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-900">
           <p className="text-xs font-bold uppercase tracking-wider text-neutral-500">Share this story</p>
           <div className="mt-3">
             <ShareButtons url={url} title={article.title} />

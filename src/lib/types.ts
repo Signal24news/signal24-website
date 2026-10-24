@@ -6,6 +6,8 @@ export type Article = {
   excerpt: string;
   category: CategorySlug;
   date: string;
+  /** Set when a story is updated after publishing (CMS field "Last updated"). */
+  updated?: string;
   author: string;
   image: string;
   imageAlt?: string;

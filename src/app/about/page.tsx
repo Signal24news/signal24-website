@@ -79,6 +79,12 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+        <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
+          Signal 24 also works with a team of writers through our Newsroom Internship.{' '}
+          <Link href="/team" className="font-semibold text-brand-600 hover:underline dark:text-brand-300">
+            Meet the newsroom →
+          </Link>
+        </p>
       </section>
 
       <section className="mt-12">

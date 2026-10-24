@@ -69,7 +69,18 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    // Lets Google show large images in Discover and Top Stories, and full snippets.
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
