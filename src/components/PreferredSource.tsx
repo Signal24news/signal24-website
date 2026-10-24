@@ -5,7 +5,14 @@
  */
 const PREFERRED_SOURCE_URL = 'https://www.google.com/preferences/source?q=signal24.info';
 
+/**
+ * Turn this on once signal24.info shows up when you search for it at
+ * https://www.google.com/preferences/source (until then the link shows "No results").
+ */
+const SHOW_PREFERRED_SOURCE = false;
+
 export function PreferredSource({ className = '' }: { className?: string }) {
+  if (!SHOW_PREFERRED_SOURCE) return null;
   return (
     <div
       className={`flex flex-col gap-3 rounded-xl border border-brand-100 bg-brand-50 p-5 sm:flex-row sm:items-center sm:justify-between dark:border-brand-900 dark:bg-brand-900/30 ${className}`}
