@@ -73,7 +73,7 @@ collections:
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }
       - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false, hint: "The 3 newest featured stories fill the top of the homepage. The newest one gets the big slot." }
       - { label: "Breaking news", name: "breaking", widget: "boolean", default: false }
-      - { label: "Tags", name: "tags", widget: "list", required: false, default: [] }
+      - { label: "Tags", name: "tags", widget: "list", required: false, default: [], hint: "One word per tag, no spaces, e.g. IranWar, OilPrices. Separate tags with commas." }
       - label: "Signal Box"
         name: "signal"
         widget: "object"
