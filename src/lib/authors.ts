@@ -29,7 +29,7 @@ export function getAuthors(): Author[] {
         role: data.role ?? 'Contributor',
         image: data.image || '/icon-512.png',
         hasPhoto: Boolean(data.image),
-        avatar: data.avatar === 'male' ? 'male' : 'female',
+        avatar: data.avatar === 'male' || data.avatar === 'initials' ? data.avatar : 'female',
         desk: data.desk || undefined,
         shortBio: data.shortBio ?? '',
         bio: Array.isArray(data.bio) ? data.bio.filter(Boolean) : [],

@@ -4,7 +4,7 @@ import type { Author } from '@/lib/constants';
 /**
  * Author picture. Shows the real photo when there is one. Writers without a
  * photo get the Signal 24 "navy signal" avatar instead: a navy circle with the
- * blue signal waves and a female or male figure (CMS field "Avatar").
+ * blue signal waves and a female or male figure, or the writer's initials (CMS field "Avatar").
  */
 export function AuthorAvatar({
   author,
@@ -31,16 +31,36 @@ export function AuthorAvatar({
       />
     );
   }
-  return <SignalAvatar kind={author.avatar ?? 'female'} size={size} className={className} label={alt} />;
+  return (
+    <SignalAvatar
+      kind={author.avatar ?? 'female'}
+      initials={initialsOf(author.name)}
+      size={size}
+      className={className}
+      label={alt}
+    />
+  );
+}
+
+function initialsOf(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
 }
 
 export function SignalAvatar({
   kind,
+  initials = '',
   size,
   className = '',
   label = '',
 }: {
-  kind: 'female' | 'male';
+  kind: 'female' | 'male' | 'initials';
+  initials?: string;
   size: number;
   className?: string;
   label?: string;
@@ -66,7 +86,21 @@ export function SignalAvatar({
         {/* Signal waves, as in the Signal 24 mark */}
         <path d="M64 13a30 30 0 0 1 19 19" stroke="#4467FE" strokeWidth="4" strokeLinecap="round" fill="none" />
         <path d="M65 3a40 40 0 0 1 28 28" stroke="#4467FE" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.5" />
-        {kind === 'female' ? (
+        {kind === 'initials' ? (
+          <text
+            x="48"
+            y="50"
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="#FFFFFF"
+            fontSize="34"
+            fontWeight="800"
+            fontFamily="Inter, system-ui, sans-serif"
+            letterSpacing="1"
+          >
+            {initials}
+          </text>
+        ) : kind === 'female' ? (
           <>
             {/* Long hair, falling behind the shoulders */}
             <path d="M48 24c-12 0-19 9-19 21 0 10-2 22-8 31h54c-6-9-8-21-8-31 0-12-7-21-19-21z" fill="#99ADF9" />

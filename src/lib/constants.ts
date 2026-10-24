@@ -56,7 +56,7 @@ export type Author = {
   /** True when the writer uploaded a real photo. */
   hasPhoto?: boolean;
   /** Figure on the Signal 24 avatar shown when there is no photo. */
-  avatar?: 'female' | 'male';
+  avatar?: 'female' | 'male' | 'initials';
   /** Desk shown on the profile, e.g. World. */
   desk?: string;
   shortBio: string;

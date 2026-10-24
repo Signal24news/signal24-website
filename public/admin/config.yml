@@ -103,7 +103,7 @@ collections:
       - { label: "Role", name: "role", widget: "string", default: "Newsroom Intern", hint: "e.g. Founder & Editor, Contributing Writer, Newsroom Intern" }
       - { label: "Desk", name: "desk", widget: "select", required: false, options: ["World", "Middle East", "Business & Economy", "AI & Tech", "Sports", "Fact Check & Explainers"], hint: "Shown on the profile. Leave empty for editors." }
       - { label: "Photo", name: "image", widget: "image", required: false, hint: "Optional. Square headshot, at least 400x400. Leave empty to use the Signal 24 avatar." }
-      - { label: "Avatar (only used when there is no photo)", name: "avatar", widget: "select", options: [{ label: "Female figure", value: "female" }, { label: "Male figure", value: "male" }], default: "female", required: false }
+      - { label: "Avatar (only used when there is no photo)", name: "avatar", widget: "select", options: [{ label: "Female figure", value: "female" }, { label: "Male figure", value: "male" }, { label: "Initials", value: "initials" }], default: "female", required: false }
       - { label: "Short bio", name: "shortBio", widget: "text", hint: "One or two sentences. Shown at the top of the profile and in search results." }
       - { label: "Full bio (paragraphs)", name: "bio", widget: "list", required: false, field: { label: "Paragraph", name: "paragraph", widget: "text" } }
       - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }

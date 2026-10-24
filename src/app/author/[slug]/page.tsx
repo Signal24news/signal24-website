@@ -58,7 +58,15 @@ export default async function AuthorPage({ params }: { params: { slug: string } 
             {author.desk && <span className="text-neutral-500 dark:text-neutral-400"> · {author.desk} desk</span>}
           </p>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight md:text-4xl">{author.name}</h1>
-          <p className="mt-3 text-neutral-600 dark:text-neutral-300">{author.shortBio}</p>
+          {author.bio.length > 0 ? (
+            <div className="mt-3 space-y-2 text-neutral-600 dark:text-neutral-300">
+              {author.bio.map((para) => (
+                <p key={para.slice(0, 32)}>{para}</p>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-3 text-neutral-600 dark:text-neutral-300">{author.shortBio}</p>
+          )}
           <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
             {author.email && (
               <a href={`mailto:${author.email}`} className="text-brand hover:underline">
