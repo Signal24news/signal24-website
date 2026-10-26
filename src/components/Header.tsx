@@ -12,7 +12,7 @@ const UTILITY_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/team', label: 'Our newsroom' },
   { href: '/contact', label: 'Contact' },
-  { href: '/contact', label: 'Send a tip' },
+  { href: '/tip', label: 'Send a tip' },
   { href: '/editorial-policy', label: 'Editorial Policy' },
 ];
 

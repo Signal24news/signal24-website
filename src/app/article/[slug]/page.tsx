@@ -15,6 +15,7 @@ import { findAuthor } from '@/lib/authors';
 import { SignalBox } from '@/components/SignalBox';
 import { PreferredSource } from '@/components/PreferredSource';
 import { LocalTime } from '@/components/LocalTime';
+import { ListenButton } from '@/components/ListenButton';
 
 function absolute(src: string) {
   return src.startsWith('http') ? src : `${SITE.url}${src}`;
@@ -94,7 +95,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   };
 
   return (
-    <article className="pb-16">
+    <article id="story" className="pb-16">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -126,7 +127,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           )}
         </div>
 
-        <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
+        <h1 data-listen className="mt-4 text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
           {article.title}
         </h1>
 
@@ -199,8 +200,12 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       </figure>
 
       <div className="mx-auto mt-10 max-w-3xl px-4">
+        <div className="mb-6">
+          <ListenButton targetId="story" />
+        </div>
         <SignalBox signal={article.signal} />
         <div
+          data-listen
           className="prose-article"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: article.body }}

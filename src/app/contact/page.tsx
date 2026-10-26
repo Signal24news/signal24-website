@@ -13,7 +13,7 @@ const CHANNELS = [
   {
     label: 'News tips',
     email: SITE.tipsEmail,
-    text: 'Seen something we should look into? Send us what you know, plus any documents, photos or links that back it up.',
+    text: 'Seen something we should look into? Use our tip form (you can stay anonymous), or email us what you know, plus any documents, photos or links that back it up.',
   },
   {
     label: 'Corrections',
@@ -59,6 +59,10 @@ export default function ContactPage() {
           </div>
         ))}
       </div>
+
+      <p>
+        <Link href="/tip">Send us a tip with our form →</Link>
+      </p>
 
       <h2>Sending a sensitive tip</h2>
       <p>

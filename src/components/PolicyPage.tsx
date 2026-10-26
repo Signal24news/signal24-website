@@ -3,6 +3,7 @@ import Link from 'next/link';
 export const POLICY_LINKS = [
   { href: '/about', label: 'About Signal 24' },
   { href: '/contact', label: 'Contact' },
+  { href: '/tip', label: 'Send a tip' },
   { href: '/editorial-policy', label: 'Editorial Policy' },
   { href: '/corrections', label: 'Corrections Policy' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
