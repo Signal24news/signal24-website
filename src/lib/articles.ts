@@ -7,7 +7,8 @@ import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
 import readingTime from 'reading-time';
 import type { CategorySlug } from './constants';
-import type { Article } from './types';
+import type { Article, Correction, StoryType } from './types';
+import { STORY_TYPES } from './types';
 
 export type { Article } from './types';
 export { formatDate, formatDateTime } from './format';
@@ -68,6 +69,8 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
             whatsNext: data.signal.whatsNext || undefined,
           }
         : undefined,
+    storyType: parseStoryType(data.storyType, data.category),
+    corrections: parseCorrections(data.corrections),
     body: html,
     readingTime: rt.text,
     readingMinutes: Math.max(1, Math.round(rt.minutes)),
@@ -137,4 +140,24 @@ export async function getArticlesByAuthorName(name: string): Promise<Article[]> 
   const all = await getAllArticles();
   const n = name.trim().toLowerCase();
   return all.filter((a) => a.author.trim().toLowerCase() === n);
+}
+
+function parseStoryType(value: unknown, category: unknown): StoryType {
+  if (typeof value === 'string' && value in STORY_TYPES) return value as StoryType;
+  if (category === 'explainers') return 'explainer';
+  if (category === 'fact-check') return 'fact-check';
+  return 'news';
+}
+
+function parseCorrections(value: unknown): Correction[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((c) => c && typeof c.text === 'string' && c.text.trim() && c.date && !Number.isNaN(new Date(c.date).getTime()))
+    .map((c) => ({
+      date: new Date(c.date).toISOString(),
+      kind: c.kind === 'clarification' ? 'clarification' : 'correction',
+      text: String(c.text).trim(),
+      top: Boolean(c.top),
+    }))
+    .sort((a, b) => +new Date(a.date) - +new Date(b.date)) as Correction[];
 }

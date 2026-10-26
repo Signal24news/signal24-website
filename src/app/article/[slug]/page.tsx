@@ -16,6 +16,10 @@ import { SignalBox } from '@/components/SignalBox';
 import { PreferredSource } from '@/components/PreferredSource';
 import { LocalTime } from '@/components/LocalTime';
 import { ListenButton } from '@/components/ListenButton';
+import { SourcesBox } from '@/components/SourcesBox';
+import { CorrectionBanner, CorrectionList } from '@/components/CorrectionNotes';
+import { extractSources } from '@/lib/sources';
+import { STORY_TYPES } from '@/lib/types';
 
 function absolute(src: string) {
   return src.startsWith('http') ? src : `${SITE.url}${src}`;
@@ -67,14 +71,20 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   const url = `${SITE.url}/article/${article.slug}`;
   const author = findAuthor(article.author);
   const authorName = author?.name ?? article.author;
+  const type = STORY_TYPES[article.storyType];
+  const sources = extractSources(article.body);
+  const lastChange = [article.updated, ...article.corrections.map((c) => c.date)]
+    .filter((d): d is string => Boolean(d))
+    .sort()
+    .pop();
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'NewsArticle',
+    '@type': type.schema,
     headline: article.title,
     image: [absolute(article.image)],
     datePublished: article.date,
-    dateModified: article.updated ?? article.date,
+    dateModified: lastChange && lastChange > article.date ? lastChange : article.date,
     author: [
       author
         ? { '@type': 'Person', name: author.name, url: `${SITE.url}/author/${author.slug}`, jobTitle: author.role }
@@ -120,6 +130,16 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           >
             {catName}
           </Link>
+          <span
+            className={`rounded px-2 py-1 text-[11px] font-bold uppercase tracking-wider ring-1 ring-inset ${
+              article.storyType === 'opinion'
+                ? 'text-amber-800 ring-amber-400 dark:text-amber-200'
+                : 'text-neutral-700 ring-neutral-300 dark:text-neutral-200 dark:ring-neutral-600'
+            }`}
+            title={type.hint}
+          >
+            {type.label}
+          </span>
           {article.breaking && (
             <span className="rounded bg-breaking px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
               Breaking
@@ -200,6 +220,12 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       </figure>
 
       <div className="mx-auto mt-10 max-w-3xl px-4">
+        <CorrectionBanner corrections={article.corrections} />
+        {article.storyType === 'opinion' && (
+          <p className="mb-6 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100">
+            <strong>Opinion.</strong> {type.hint}
+          </p>
+        )}
         <div className="mb-6">
           <ListenButton targetId="story" />
         </div>
@@ -210,6 +236,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
+
+        <CorrectionList corrections={article.corrections} />
+        <SourcesBox sources={sources} />
 
         {article.tags && article.tags.length > 0 && (
           <div className="mt-10 flex flex-wrap gap-2">

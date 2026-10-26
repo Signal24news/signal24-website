@@ -113,6 +113,29 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section className="mt-12" aria-labelledby="ownership">
+        <h2 id="ownership" className="scroll-mt-24 text-xl font-extrabold tracking-tight">
+          Ownership and funding
+        </h2>
+        <div className="mt-3 space-y-4 text-neutral-700 dark:text-neutral-300">
+          <p>
+            Signal 24 is owned and run by its founder, {founder.name}. It is not owned by, funded by
+            or affiliated with any political party, government or company.
+          </p>
+          <p>
+            Today, Signal 24 is paid for by its founder. As we grow, we plan to earn money from
+            advertising on the site and, later, from sponsorships. Advertisers and sponsors have no say
+            over what we cover or how, and any sponsored content will be clearly labelled as
+            sponsored.
+          </p>
+          <p>
+            Our writers include students and early-career journalists in our{' '}
+            <Link href="/team">Newsroom Internship</Link>. Every story they write is edited and
+            checked before it is published.
+          </p>
+        </div>
+      </section>
+
       <section className="mt-12 rounded-2xl border border-neutral-200 p-6 dark:border-neutral-800">
         <h2 className="text-xl font-extrabold tracking-tight">Get in touch</h2>
         <p className="mt-2 text-neutral-700 dark:text-neutral-300">

@@ -66,8 +66,32 @@ collections:
           - { label: "Fact Check", value: "fact-check" }
           - { label: "Explainers", value: "explainers" }
         default: "world"
+      - label: "Story type"
+        name: "storyType"
+        widget: "select"
+        required: false
+        hint: "Shown as a label on the story. News = facts and quotes. Analysis = what it may mean. Explainer = background. Opinion = the writer's own view."
+        options:
+          - { label: "News", value: "news" }
+          - { label: "Analysis", value: "analysis" }
+          - { label: "Explainer", value: "explainer" }
+          - { label: "Fact Check", value: "fact-check" }
+          - { label: "Opinion", value: "opinion" }
+        default: "news"
       - { label: "Publish date", name: "date", widget: "datetime" }
       - { label: "Last updated", name: "updated", widget: "datetime", required: false, default: "", hint: "Leave empty for new stories. Set it only when you add new facts to a published story (for example the Claim Tracker)." }
+      - label: "Corrections and clarifications"
+        name: "corrections"
+        widget: "list"
+        required: false
+        collapsed: true
+        summary: "{{fields.kind}}: {{fields.text}}"
+        hint: "Only when you fix a factual mistake (Correction) or rewrite something unclear (Clarification). Not needed for spelling fixes. Shown at the end of the story and on the Corrections page."
+        fields:
+          - { label: "Date", name: "date", widget: "datetime" }
+          - { label: "Type", name: "kind", widget: "select", options: [{ label: "Correction", value: "correction" }, { label: "Clarification", value: "clarification" }], default: "correction" }
+          - { label: "What was wrong and what we changed", name: "text", widget: "text", hint: "e.g. An earlier version of this story said the match was in Karachi. It was in Lahore." }
+          - { label: "Also show at the top of the story", name: "top", widget: "boolean", default: false, required: false, hint: "Only for serious errors that change the meaning of the story." }
       - { label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "name", display_fields: ["name", "role"], default: "Saad Ali", hint: "Pick the writer. Add new writers under Authors first." }
       - { label: "Featured image", name: "image", widget: "image", hint: "Use a 16:9 image, 1600×900 or larger." }
       - { label: "Image caption / alt", name: "imageAlt", widget: "string", required: false }

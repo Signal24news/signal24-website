@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PolicyPage } from '@/components/PolicyPage';
 import { SITE } from '@/lib/constants';
+import { getAllArticles, formatDate } from '@/lib/articles';
 
 export const metadata: Metadata = {
   title: 'Corrections Policy',
@@ -9,13 +10,18 @@ export const metadata: Metadata = {
   alternates: { canonical: '/corrections' },
 };
 
-export default function CorrectionsPage() {
+export default async function CorrectionsPage() {
+  const articles = await getAllArticles();
+  const log = articles
+    .flatMap((a) => a.corrections.map((c) => ({ ...c, slug: a.slug, title: a.title })))
+    .sort((x, y) => +new Date(y.date) - +new Date(x.date));
+
   return (
     <PolicyPage
       eyebrow="Standards"
       title="Corrections Policy"
       intro="We work hard to get things right, but we will sometimes make mistakes. When that happens, we fix them quickly and tell you what changed."
-      updated="29 September 2026"
+      updated="27 October 2026"
       current="/corrections"
     >
       <h2>How to report an error</h2>
@@ -58,6 +64,22 @@ export default function CorrectionsPage() {
         be fixed, or if keeping it online puts someone at real risk. When we remove a story, we
         explain why where it is safe to do so.
       </p>
+
+      <h2 id="log">Corrections log</h2>
+      {log.length === 0 ? (
+        <p>We have not had to correct a published story yet. When we do, the correction will be listed here.</p>
+      ) : (
+        <ul>
+          {log.map((c) => (
+            <li key={c.slug + c.date}>
+              <strong>
+                {c.kind === 'clarification' ? 'Clarification' : 'Correction'}, {formatDate(c.date)}:
+              </strong>{' '}
+              <Link href={`/article/${c.slug}#corrections`}>{c.title}</Link>. {c.text}
+            </li>
+          ))}
+        </ul>
+      )}
 
       <p>
         This policy is part of our wider <Link href="/editorial-policy">editorial policy</Link>.

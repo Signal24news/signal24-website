@@ -106,6 +106,9 @@ const organizationJsonLd = {
   correctionsPolicy: `${SITE.url}/corrections`,
   verificationFactCheckingPolicy: `${SITE.url}/editorial-policy#verification`,
   ethicsPolicy: `${SITE.url}/editorial-policy`,
+  ownershipFundingInfo: `${SITE.url}/about#ownership`,
+  masthead: `${SITE.url}/team`,
+  actionableFeedbackPolicy: `${SITE.url}/corrections`,
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'newsroom', email: SITE.email },
     { '@type': 'ContactPoint', contactType: 'news tips', email: SITE.tipsEmail },
