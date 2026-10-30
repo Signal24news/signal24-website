@@ -7,12 +7,12 @@ excerpt: Israelis elect a new parliament on 27 October. Benjamin Netanyahu says
   to a majority.
 category: middle-east
 date: 2026-10-26T23:44:00.000+05:00
-updated: ""
+updated: 2026-10-30T17:05:00.000+05:00
 author: Usama Tahir
 image: /uploads/knesset_front_side_-_2022.jpg
 imageAlt: "The Knesset, Israel's parliament, in Jerusalem, 2022. Photo: Clema12
   / Wikimedia Commons (CC BY-SA 4.0)"
-featured: true
+featured: false
 breaking: false
 tags:
   - IsraelElection Netanyahu IranWar Knesset
@@ -28,6 +28,8 @@ signal:
     exit polls are published. Final results take a few days, and coalition talks
     could take weeks.
 ---
+  **Update, 29 October:** Netanyahu's bloc won 53 seats, eight short of a majority. [Read the results](/article/israel-election-netanyahus-bloc-falls-eight-seats-short-of-a-majority-as-arab-led-parties-win-a-record-19).
+
 Israelis go to the polls on Tuesday, 27 October, in the first general election since the Hamas-led attack of 7 October 2023. All 120 seats in the Knesset, Israel's parliament, are up for grabs, and a government needs the support of 61 of them.
  
 For Prime Minister Benjamin Netanyahu, the war with Iran is at the centre of the campaign.
