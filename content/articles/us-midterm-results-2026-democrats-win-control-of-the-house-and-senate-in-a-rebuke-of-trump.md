@@ -15,7 +15,7 @@ imageAlt: "The US Capitol in Washington, DC, where the new Congress will be
   sworn in on 3 January 2027. Photo: RobertPlausible / Wikimedia Commons (CC BY
   4.0)"
 featured: true
-breaking: true
+breaking: false
 tags:
   - Midterms2026 USElections Congress Democrats Trump
 signal:
