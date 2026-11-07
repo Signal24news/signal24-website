@@ -7,7 +7,7 @@ excerpt: A viral photo claimed Canada lit Niagara Falls blue for the Democrats
 category: fact-check
 storyType: fact-check
 date: 2026-11-08T01:52:00.000+05:00
-updated: ""
+updated: 2026-11-08T02:49:00.000+05:00
 corrections: []
 author: Saad Ali
 image: /uploads/niagara-factcheck-featured.png
@@ -46,7 +46,7 @@ One post on X asked: "Did Canada light up our side of the Falls blue?", [Lead St
  
 ## Other fact checkers agree
  
-Lead Stories, AFP and Snopes all rated the claim false by 4 November.
+Lead Stories, AFP and Snopes all debunked the claim by 4 November.
  
 It was not the only landmark claim after the vote. A similar post claimed France lit the Eiffel Tower blue to celebrate the Democrats' wins. [Snopes also checked that claim](https://www.snopes.com/fact-check/france-eiffel-tower-blue-midterms/).
  
