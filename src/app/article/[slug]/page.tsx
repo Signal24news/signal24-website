@@ -41,6 +41,16 @@ export async function generateMetadata(
     title: article.title,
     description: article.excerpt,
     alternates: { canonical: url },
+    // Overrides the site-wide author in layout.tsx so the meta author
+    // matches the byline.
+    authors: [
+      {
+        name: findAuthor(article.author)?.name ?? article.author,
+        url: findAuthor(article.author)
+          ? `${SITE.url}/author/${findAuthor(article.author)!.slug}`
+          : undefined,
+      },
+    ],
     openGraph: {
       type: 'article',
       url,
