@@ -7,14 +7,14 @@ excerpt: US prosecutors say three men acting for Iran's Revolutionary Guards and
 category: world
 storyType: news
 date: 2026-11-12T01:10:00.000+05:00
-updated: ""
+updated: 2026-11-12T01:18:00.000+05:00
 corrections: []
 author: Saad Ali
 image: /uploads/raf_fairford_-_geograph.org.uk_-_8275897.jpg
 imageAlt: "US bombers parked behind the perimeter fence at RAF Fairford,
   Gloucestershire, England, March 2026. Photo: Peter Evans / Wikimedia Commons
   (CC BY-SA 2.0)"
-featured: false
+featured: true
 breaking: false
 tags:
   - IranWar RAFFairford UK Terrorism IRGC
