@@ -6,14 +6,14 @@ excerpt: Nvidia co-founder Jensen Huang has resigned as chief executive and from
 category: ai-tech
 storyType: news
 date: 2026-11-12T20:10:00.000+05:00
-updated: ""
+updated: 2026-11-13T00:25:00.000+05:00
 corrections: []
 author: Saad Ali
 image: /uploads/jensen_huang_stanford_2026-04-30_010_-cropped-.jpg
 imageAlt: "Nvidia co-founder Jensen Huang at Stanford University, California, in
   April 2026. Photo: Anderseidesvik / Wikimedia Commons (CC BY-SA 4.0)"
 featured: true
-breaking: true
+breaking: false
 tags:
   - Nvidia JensenHuang ColetteKress AIChips Tech
 signal:
