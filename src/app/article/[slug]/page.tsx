@@ -7,6 +7,7 @@ import {
   getArticleBySlug,
   getArticleSlugs,
   getRelatedArticles,
+  isLive,
 } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
 import { ShareButtons } from '@/components/ShareButtons';
@@ -25,17 +26,21 @@ function absolute(src: string) {
   return src.startsWith('http') ? src : `${SITE.url}${src}`;
 }
 
-export const dynamicParams = false;
+// Scheduled stories are not built ahead; they render on their first visit after going live.
+export const dynamicParams = true;
+// Re-check every 10 minutes so scheduled stories go live on time.
+export const revalidate = 600;
 
 export async function generateStaticParams() {
-  return getArticleSlugs().map((slug) => ({ slug }));
+  const all = await Promise.all(getArticleSlugs().map((slug) => getArticleBySlug(slug)));
+  return all.filter((a) => a && isLive(a)).map((a) => ({ slug: a!.slug }));
 }
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
 ): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
-  if (!article) return {};
+  if (!article || !isLive(article)) return {};
   const url = `${SITE.url}/article/${article.slug}`;
   return {
     title: article.title,
@@ -74,7 +79,7 @@ export async function generateMetadata(
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const article = await getArticleBySlug(params.slug);
-  if (!article) notFound();
+  if (!article || !isLive(article)) notFound();
 
   const related = await getRelatedArticles(article);
   const catName = CATEGORIES.find((c) => c.slug === article.category)?.name ?? article.category;

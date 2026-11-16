@@ -20,7 +20,8 @@ async function main() {
   const urls = [SITE + '/'];
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
     const { data } = matter(fs.readFileSync(path.join(dir, f), 'utf8'));
-    const t = new Date(data.updated || data.date).getTime();
+    if (data.scheduled && new Date(data.scheduled).getTime() > now) continue; // not live yet
+    const t = new Date(data.updated || data.scheduled || data.date).getTime();
     if (!Number.isNaN(t) && now - t <= WINDOW_MS) urls.push(SITE + '/article/' + f.replace(/\.md$/, ''));
   }
   if (urls.length === 1) {

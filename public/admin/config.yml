@@ -33,9 +33,12 @@ collections:
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
-    summary: "{{title}} — {{category}} — {{date | date('YYYY-MM-DD')}}"
+    summary: "{{scheduled | ternary('⏰ SCHEDULED · ', '')}}{{title}} — {{category}} — {{date | date('YYYY-MM-DD')}}"
     sortable_fields: ['date', 'title', 'category']
     view_filters:
+      - label: "Scheduled"
+        field: scheduled
+        pattern: '.+'
       - label: "Featured"
         field: featured
         pattern: true
@@ -53,6 +56,7 @@ collections:
         pattern: business
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "⏰ Schedule (optional)", name: "scheduled", widget: "datetime", required: false, default: "", hint: "Leave empty to publish now. To schedule, pick the date and time (Pakistan time), then click Publish now: the story stays hidden on the site until that time and goes live within about 10 minutes of it. Never schedule breaking news." }
       - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "1–2 sentence summary. Used for cards, social shares, and SEO." }
       - label: "Category"
         name: "category"

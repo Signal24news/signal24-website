@@ -5,6 +5,8 @@ import { getArticlesByCategory } from '@/lib/articles';
 import { CATEGORIES, type CategorySlug } from '@/lib/constants';
 
 export const dynamicParams = false;
+// Re-check every 10 minutes so scheduled stories appear on time.
+export const revalidate = 600;
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));

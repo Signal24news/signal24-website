@@ -2,7 +2,8 @@ import { getAllArticles } from '@/lib/articles';
 import { SITE } from '@/lib/constants';
 
 // Built with the site. Every publish in the CMS triggers a new build, so this stays fresh.
-export const dynamic = 'force-static';
+// Rebuilt every 10 minutes so scheduled stories are listed once they go live.
+export const revalidate = 600;
 
 /** Google News only reads stories from the last 2 days. */
 const WINDOW_MS = 2 * 24 * 60 * 60 * 1000;

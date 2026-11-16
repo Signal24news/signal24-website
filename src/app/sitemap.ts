@@ -3,6 +3,9 @@ import { getAllArticles } from '@/lib/articles';
 import { CATEGORIES, SITE } from '@/lib/constants';
 import { getAuthors } from '@/lib/authors';
 
+// Rebuilt every 10 minutes so scheduled stories are listed once they go live.
+export const revalidate = 600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getAllArticles();
   const lastOf = (a: { date: string; updated?: string }) => new Date(a.updated ?? a.date);

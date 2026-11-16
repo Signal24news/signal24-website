@@ -8,6 +8,8 @@ export type Article = {
   date: string;
   /** Set when a story is updated after publishing (CMS field "Last updated"). */
   updated?: string;
+  /** Go-live time set in the CMS "Schedule" field; hidden until then. */
+  scheduled?: string;
   author: string;
   image: string;
   imageAlt?: string;

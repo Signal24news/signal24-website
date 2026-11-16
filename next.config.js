@@ -27,7 +27,16 @@ const nextConfig = {
     // them with the serverless functions.
     outputFileTracingIncludes: {
       '/verify': ['./content/certificates/**/*', './content/authors/**/*', './content/settings/**/*'],
-      '/search': ['./content/authors/**/*', './content/settings/**/*'],
+      '/search': ['./content/articles/**/*', './content/authors/**/*', './content/settings/**/*'],
+      // Pages that refresh every 10 minutes (scheduled stories) read these at runtime.
+      '/': ['./content/articles/**/*', './content/authors/**/*', './content/settings/**/*'],
+      '/article/[slug]': ['./content/articles/**/*', './content/authors/**/*', './content/settings/**/*'],
+      '/category/[slug]': ['./content/articles/**/*', './content/settings/**/*'],
+      '/author/[slug]': ['./content/articles/**/*', './content/authors/**/*', './content/settings/**/*'],
+      '/corrections': ['./content/articles/**/*', './content/settings/**/*'],
+      '/rss.xml': ['./content/articles/**/*', './content/settings/**/*'],
+      '/sitemap.xml': ['./content/articles/**/*', './content/authors/**/*'],
+      '/news-sitemap.xml': ['./content/articles/**/*'],
     },
   },
 };

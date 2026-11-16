@@ -4,6 +4,8 @@ import { PolicyPage } from '@/components/PolicyPage';
 import { SITE } from '@/lib/constants';
 import { getAllArticles, formatDate } from '@/lib/articles';
 
+export const revalidate = 600;
+
 export const metadata: Metadata = {
   title: 'Corrections Policy',
   description: 'How Signal 24 handles mistakes, corrections and updates, and how to report an error.',

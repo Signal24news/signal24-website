@@ -7,6 +7,8 @@ import { SITE } from '@/lib/constants';
 import { getAuthors, getAuthorBySlug } from '@/lib/authors';
 
 export const dynamicParams = false;
+// Re-check every 10 minutes so scheduled stories appear on time.
+export const revalidate = 600;
 
 export function generateStaticParams() {
   return getAuthors().map((a) => ({ slug: a.slug }));

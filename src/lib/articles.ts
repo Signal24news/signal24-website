@@ -17,8 +17,27 @@ const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles');
 
 function ensureDir() {
   if (!fs.existsSync(ARTICLES_DIR)) {
-    fs.mkdirSync(ARTICLES_DIR, { recursive: true });
+    try {
+      fs.mkdirSync(ARTICLES_DIR, { recursive: true });
+    } catch {
+      // Read-only file system on the server: nothing to create.
+    }
   }
+}
+
+/** A valid "Schedule" time from the CMS, or undefined when the story is not scheduled. */
+function parseSchedule(value: unknown): string | undefined {
+  if (!value) return undefined;
+  const t = new Date(value as string).getTime();
+  return Number.isNaN(t) ? undefined : new Date(t).toISOString();
+}
+
+/**
+ * True once a story may be shown. Stories without a schedule are live at once;
+ * scheduled stories stay hidden everywhere until their time has passed.
+ */
+export function isLive(article: Pick<Article, 'scheduled'>, now = Date.now()): boolean {
+  return !article.scheduled || new Date(article.scheduled).getTime() <= now;
 }
 
 export function getArticleSlugs(): string[] {
@@ -37,6 +56,8 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
 
+  const scheduled = parseSchedule(data.scheduled);
+
   const processed = await remark().use(remarkGfm).use(remarkHtml).process(content);
   const html = processed.toString();
   const rt = readingTime(content);
@@ -46,7 +67,9 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     title: data.title ?? 'Untitled',
     excerpt: data.excerpt ?? content.slice(0, 180).replace(/\s+/g, ' ').trim() + '…',
     category: (data.category ?? 'world') as CategorySlug,
-    date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+    // A scheduled story's publish date is the time it goes live.
+    date: scheduled ?? (data.date ? new Date(data.date).toISOString() : new Date().toISOString()),
+    scheduled,
     updated:
       data.updated && !Number.isNaN(new Date(data.updated).getTime())
         ? new Date(data.updated).toISOString()
@@ -80,8 +103,9 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
 export async function getAllArticles(): Promise<Article[]> {
   const slugs = getArticleSlugs();
   const articles = await Promise.all(slugs.map((s) => getArticleBySlug(s)));
+  const now = Date.now();
   return articles
-    .filter((a): a is Article => a !== null)
+    .filter((a): a is Article => a !== null && isLive(a, now))
     .sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
