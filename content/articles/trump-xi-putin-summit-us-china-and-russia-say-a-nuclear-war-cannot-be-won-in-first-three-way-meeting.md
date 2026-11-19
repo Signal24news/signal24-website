@@ -8,7 +8,7 @@ excerpt: "Trump Xi Putin summit: the US, China and Russia met as a trio for the
 category: world
 storyType: news
 date: 2026-11-19T18:36:00.000+05:00
-updated: ""
+updated: 2026-11-20T01:39:00.000+05:00
 corrections: []
 author: Saad Ali
 image: /uploads/flu7znmtkmaixjwxavqo60gixhqpdfwn.jpg
@@ -16,7 +16,7 @@ imageAlt: "Russian President Vladimir Putin, Chinese President Xi Jinping and US
   President Donald Trump at their trilateral meeting in Shenzhen, China, 19
   November 2026. Photo: Kremlin.ru (CC BY 4.0)"
 featured: true
-breaking: true
+breaking: false
 tags:
   - TrumpXiPutin Trump XiJinping Putin APEC Shenzhen NuclearWeapons Ukraine
 signal:
