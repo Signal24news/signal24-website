@@ -53,7 +53,7 @@ function Thumb({ article, sizes, className = '' }: { article: Article; sizes: st
         alt={article.imageAlt ?? article.title}
         fill
         sizes={sizes}
-        className="object-cover transition duration-500 group-hover:scale-[1.03]"
+        className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
       />
     </div>
   );

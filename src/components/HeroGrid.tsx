@@ -65,7 +65,7 @@ function Tile({ article, size }: { article: Article; size: 'lead' | 'half' | 'si
           alt={article.imageAlt ?? article.title}
           fill
           sizes={big ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw'}
-          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
           priority={big}
         />
         {/* Navy fade so white text stays readable on any photo or graphic */}

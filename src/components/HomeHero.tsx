@@ -86,7 +86,7 @@ export function HomeHero({
                 fill
                 priority
                 sizes="(min-width: 1024px) 640px, 100vw"
-                className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.02]"
               />
               <span className="absolute left-0 top-0 bg-brand-600 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white">
                 {categoryName(lead.category)}
@@ -132,7 +132,7 @@ export function HomeHero({
                       alt={a.imageAlt ?? a.title}
                       fill
                       sizes="(min-width: 1024px) 300px, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
                   <div className="min-w-0 flex-1">

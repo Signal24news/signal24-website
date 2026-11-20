@@ -223,7 +223,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             alt={article.imageAlt ?? article.title}
             fill
             sizes="(min-width: 1024px) 1024px, 100vw"
-            className="object-cover"
+            className="object-cover object-[50%_20%]"
             priority
           />
         </div>

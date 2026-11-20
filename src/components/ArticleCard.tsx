@@ -21,7 +21,7 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
             alt={article.imageAlt ?? article.title}
             fill
             sizes="120px"
-            className="object-cover transition group-hover:scale-105"
+            className="object-cover object-[50%_20%] transition group-hover:scale-105"
           />
         </div>
         <div className="min-w-0 flex-1">
@@ -50,7 +50,7 @@ export function ArticleCard({ article, variant = 'default' }: { article: Article
           alt={article.imageAlt ?? article.title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition duration-500 group-hover:scale-105"
+          className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-105"
         />
         <span className="absolute left-3 top-3 rounded bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
           {cat}

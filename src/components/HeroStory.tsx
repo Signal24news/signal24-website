@@ -16,7 +16,7 @@ export function HeroStory({ article }: { article: Article }) {
             alt={article.imageAlt ?? article.title}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.03]"
+            className="object-cover object-[50%_20%] transition duration-500 group-hover:scale-[1.03]"
             priority
           />
           <div className="absolute left-4 top-4 inline-flex items-center gap-2">
