@@ -7,7 +7,7 @@ excerpt: "Stock market down today: the Nasdaq fell more than 3% on Friday and
 category: business
 storyType: news
 date: 2026-11-21T00:52:00.000+05:00
-updated: ""
+updated: 2026-11-21T01:03:00.000+05:00
 corrections: []
 author: Saad Ali
 image: /uploads/nasdaq_times_square_-_panoramio.jpg
@@ -41,7 +41,7 @@ Shares of AI company Anthropic also fell on their second day of trading after a 
  
 ## Bitcoin and gold fall too
  
-The sell-off spread beyond stocks. Bitcoin was trading near $62,000 earlier on Friday and was set for another weekly decline, [according to Nexo](https://nexo.com/blog/markets-today-november-20). [CHECK latest bitcoin price before publishing]
+The sell-off spread beyond stocks. Bitcoin was trading near $62,000 earlier on Friday and was set for another weekly decline, [according to Nexo](https://nexo.com/blog/markets-today-november-20). 
  
 Wall Street's "fear gauge," the VIX, jumped as traders braced for more swings, [Rolling Out reported](https://rollingout.com/2026/11/20/stock-market-spikes-and-traders-flinch/).
  
