@@ -14,7 +14,7 @@ author: Maira Maqsood
 image: /uploads/3840px-harry_kane_england_v_panama_27_june_26-145.jpg
 imageAlt: "Harry Kane playing for England against Panama at the 2026 FIFA World
   Cup, on 27 June 2026. Photo: Bryan Berlin / Wikimedia Commons (CC BY-SA 4.0)"
-featured: false
+featured: true
 breaking: false
 tags:
   - HarryKaneInjury HarryKane BayernMunich England Bundesliga NationsLeague
