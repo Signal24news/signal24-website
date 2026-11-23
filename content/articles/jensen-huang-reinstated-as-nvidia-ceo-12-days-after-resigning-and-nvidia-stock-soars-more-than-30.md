@@ -11,7 +11,7 @@ date: 2026-11-23T23:58:00.000+05:00
 updated: ""
 corrections: []
 author: Saad Ali
-image: /uploads/jensen_huang_stanford_2026-04-30_010_-cropped-.jpg
+image: /uploads/jensen_huang_stanford_2026-04-30_035.jpg
 imageAlt: "Nvidia co-founder Jensen Huang at Stanford University, California, in
   April 2026. Photo: Anderseidesvik / Wikimedia Commons (CC BY-SA 4.0)"
 featured: true
