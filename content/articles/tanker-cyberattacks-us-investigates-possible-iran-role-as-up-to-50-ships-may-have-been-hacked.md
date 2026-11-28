@@ -53,6 +53,5 @@ Separately, Iran's Islamic Revolutionary Guard Corps Navy claimed that several t
  
 Read more: [Strait of Hormuz attacks reach a wartime high](https://signal24.info/article/strait-of-hormuz-attacks-reach-their-highest-level-since-the-iran-war-began-as-two-tankers-catch-fire) and [Iran says tankers hit its mines in the strait](https://signal24.info/article/iran-says-tankers-hit-its-mines-in-the-strait-of-hormuz-while-the-us-insists-the-main-shipping-routes-are-clear).
  
-=== EDITOR NOTE (do not paste) ===
-Changed or cut because the links did not support them: "Iran's state news agency said it had been hacked" (it was Iran's Mehr that made claims about the VL Prosperity, and the US did not blame Iran), the ransom demand and "don't ship goods from the US" line, "North America, Europe and Asia", the Amir Hatami quote (not in the ABC link, and the link was broken), "UKMTO could not determine who was behind it", the stray "2" and "In isolation". Removed ?utm_ from every link. Added NPR/WUSF, The Record and SecurityWeek as second sources. Desk Middle East. New photo with a Commons link.
+
  
