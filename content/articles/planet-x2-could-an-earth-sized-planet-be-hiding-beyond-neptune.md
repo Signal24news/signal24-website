@@ -52,6 +52,4 @@ For now, Planet X2 remains a scientific possibility, not a newly confirmed plane
  
 For more explainers, read [why Los Angeles gets so many earthquakes](https://signal24.info/article/earthquake-los-angeles-why-the-commerce-quakes-magnitude-changed-four-times-and-why-socal-shakes-so-often) and [what a dirty bomb is](https://signal24.info/article/dirty-bomb-what-it-is-and-could-iran-build-one-after-a-reported-washington-plot).
  
-=== EDITOR NOTE (do not paste) ===
-Edits: keyword-led title, added Newsweek and National Geographic as extra sources, linked the paper inside each sentence that uses its figures, cut the "23 November" publish date (we could not confirm the exact day), added internal links. Draft arrived late (9:43pm, due 12pm) and as .docx.
- 
+
