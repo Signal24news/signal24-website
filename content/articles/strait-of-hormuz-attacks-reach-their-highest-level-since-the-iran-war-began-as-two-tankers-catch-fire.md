@@ -58,6 +58,4 @@ About [one-fifth of the world's oil](https://sg.news.yahoo.com/iranian-attacks-s
  
 Read more: [what the Strait of Hormuz closure means for oil prices](https://signal24.info/article/strait-of-hormuz-closure-what-it-means-for-oil-prices-and-shipping), [Iran says tankers hit its mines in the strait](https://signal24.info/article/iran-says-tankers-hit-its-mines-in-the-strait-of-hormuz-while-the-us-insists-the-main-shipping-routes-are-clear) and [Iran and the US trade Hormuz offers through Qatar](https://signal24.info/article/iran-and-the-us-trade-hormuz-offers-through-qatar-but-the-nuclear-question-still-divides-them).
  
-=== EDITOR NOTE (do not paste) ===
-Cut because we could not confirm them (aje.news short links can't be opened, and the lines are not in New Arab or CNN/Yahoo): IRGC "three tankers hit mines", US drone shot down, Treasury sanctions on two dozen firms, the Qatari PM quote, "Iran's military accused commercial vessels of attacks", "2025 target". Desk changed to Middle East. Photo changed.
- 
+
