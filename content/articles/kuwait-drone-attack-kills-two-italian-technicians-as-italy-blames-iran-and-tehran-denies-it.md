@@ -52,6 +52,3 @@ The Washington Post described the attack as part of [a wave of recent Iranian st
  
 Read more: [Iran says its drones hit US Patriot systems in Kuwait](https://signal24.info/article/iran-kuwait-attack-irans-army-says-its-drones-hit-us-patriot-systems-at-ali-al-salem-air-base) and [Israel says it is ready to strike Iran on its own](https://signal24.info/article/israel-attack-iran-israel-says-it-is-ready-to-strike-on-our-own-as-iran-accuses-it-of-dragging-the-us-into-war).
  
-=== EDITOR NOTE (do not paste) ===
-Fixed: "heartened by their death" (wrong word, and the Rheinmetall statement could not be checked, so cut); "Pakistanis" (one Pakistani national); "attacks carried out by Iran and the Gulf states" (it is Iran striking Gulf states); "attacked differently" (unclear, cut); a quote that was never closed; "Rome-based" (Rheinmetall Italia is the Italian unit of a German group). Cut: the victims' ages (could not confirm), the Sa'ar line, the Reuters and BBC links that cannot be opened (replaced with Yahoo/Reuters, CNN, Gulf News, TRT). Photo: the map was replaced with a Kuwait City photo.
- 
