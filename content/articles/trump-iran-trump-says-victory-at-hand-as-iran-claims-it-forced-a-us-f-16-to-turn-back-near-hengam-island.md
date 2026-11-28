@@ -50,6 +50,4 @@ Iran's Foreign Minister Abbas Araghchi again denied that Iran was behind the [dr
  
 Read more: [Israel says it is ready to strike Iran on its own](https://signal24.info/article/israel-attack-iran-israel-says-it-is-ready-to-strike-on-our-own-as-iran-accuses-it-of-dragging-the-us-into-war) and [tanker cyberattacks: the US investigates a possible Iran role](https://signal24.info/article/tanker-cyberattacks-us-investigates-possible-iran-role-as-up-to-50-ships-may-have-been-hacked).
  
-=== EDITOR NOTE (do not paste) ===
-Most important fix: the draft said Iran's air defences "shot down a US F-16". Iran only claims it fired warning shots and the jet turned back. Also fixed: a paraphrase was put inside quote marks ("Washington is giving them every opportunity"); the "golden opportunity" line was unclear; the Russia/China point was written twice; an AP quote was linked to Gulf News. Cut because we could not confirm them: the "150 missiles" line and the Araghchi Telegram quote on priorities and negotiations (the links could not be opened or did not have them). The draft used our own Kuwait story as the source for Araghchi; we now link Gulf News. New photo with a Commons link.
- 
+
