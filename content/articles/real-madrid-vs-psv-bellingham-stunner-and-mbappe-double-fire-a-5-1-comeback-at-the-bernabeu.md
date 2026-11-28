@@ -54,6 +54,3 @@ After Tuesday's games PSV sit [28th with four points](https://www.uefa.com/uefac
  
 For more football, read our stories on [Liverpool's 4-0 win over Man Utd](https://signal24.info/article/liverpool-vs-man-utd-liverpool-thrash-10-man-united-4-0-in-pochettinos-first-game) and [Harry Kane's ankle injury](https://signal24.info/article/harry-kane-injury-england-captain-out-for-a-few-months-with-a-torn-ankle-ligament).
  
-=== EDITOR NOTE (do not paste) ===
-Small edits only: added Mourinho's exact quotes from ESPN, shortened the Courtois line to what ESPN says, cut the Bernardo Silva line (we could not check it), moved to the Sports desk, added internal links. Accents removed from names in title/URL for SEO; keep them in the body if the CMS shows them fine.
- 
