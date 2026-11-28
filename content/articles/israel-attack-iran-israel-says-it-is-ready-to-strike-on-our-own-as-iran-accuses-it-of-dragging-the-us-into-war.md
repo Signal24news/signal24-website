@@ -57,6 +57,4 @@ Iran's Revolutionary Guards said two oil tankers hit sea mines and caught fire n
  
 Read more: [tanker cyberattacks: the US investigates a possible Iran role](https://signal24.info/article/tanker-cyberattacks-us-investigates-possible-iran-role-as-up-to-50-ships-may-have-been-hacked) and [Strait of Hormuz attacks reach a wartime high](https://signal24.info/article/strait-of-hormuz-attacks-reach-their-highest-level-since-the-iran-war-began-as-two-tankers-catch-fire).
  
-=== EDITOR NOTE (do not paste) ===
-Fixed: headline said "Netanyahu launches new offensive" (no offensive has been launched); Gadi Eisenkot was called "military chief" (the chief is Eyal Zamir; Eisenkot is trying to form a government); Khasab is in Oman, not Iran. Cut: two share.google links, the 440 kg uranium line and the Washington Post lines (could not open), "Jan. 31" (source says about the end of January), the UKMTO Dubai line (Reuters only), the garbled Defrin sentence and the opinion ending. Photo changed (the 2024 IDF photo showed people at a different event).
- 
+
