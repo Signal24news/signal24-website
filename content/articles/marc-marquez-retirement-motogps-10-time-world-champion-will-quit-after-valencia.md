@@ -56,14 +56,3 @@ Hours after the announcement, Marquez finished first practice [second, 0.010 sec
  
 For more sport, read our stories on [Real Madrid's 5-1 comeback against PSV](https://signal24.info/article/real-madrid-vs-psv-bellingham-stunner-and-mbappe-double-fire-a-5-1-comeback-at-the-bernabeu) and [Harry Kane's ankle injury](https://signal24.info/article/harry-kane-injury-england-captain-out-for-a-few-months-with-a-torn-ankle-ligament).
  
-=== EDITOR NOTE (do not paste) ===
-Submitted 28 Nov, before the 12pm deadline. A strong, well-sourced draft. Editor changes:
-- Replaced BBC links (could not be opened) with leadership.ng, gpblog, The Race and FinChannel, which report the same facts.
-- Cut "seventh shoulder operation" and "foot fracture": the linked Crash.net piece only says "another operation on his right shoulder".
-- Cut "one of two riders to win two titles with two manufacturers, along with Rossi": not in any source we could open.
-- Cut "won seven of the next 13 races" (BBC only).
-- Cut the final card's exact wording (BBC only).
-- Rewrote "He has crashed 109 times between his sixth and seventh titles" to match ESPN: 109 crashes in the six seasons between those titles.
-- "One analysis calls him the greatest" now names ESPN.
-- Added internal links. Photo is the confirmed CC BY 2.0 file from the same Box Repsol set.
- 
