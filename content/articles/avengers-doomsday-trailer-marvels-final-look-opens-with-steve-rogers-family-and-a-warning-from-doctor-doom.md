@@ -48,6 +48,5 @@ Avengers: Doomsday opens in cinemas on Friday, 18 December, followed by [Avenger
  
 For more entertainment news, read our stories on [Disney's plan for the Hulu app](https://signal24.info/article/is-disney-discontinuing-the-hulu-app-what-we-know-as-hulu-moves-into-disney-in-december) and [GTA 6's record launch](https://signal24.info/article/gta-6-release-grand-theft-auto-vi-sells-an-estimated-24-6-million-copies-on-day-one).
  
-=== EDITOR NOTE (do not paste) ===
-Edits: added ABC as a second source for the opening scene, linked the internal stories, trimmed the Thor line ("quickly stopped" was not in the source), removed the Ian McKellen, Rebecca Romijn and Alan Cumming names because no link in the draft covered them. "One of his last film roles" for Patrick Stewart: cut that half-sentence if you prefer, it is our wording, not a source claim.
+
  
