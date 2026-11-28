@@ -56,6 +56,5 @@ Netflix has not announced one. The creators say they have [a few seasons of stor
  
 For more entertainment news, read our stories on [the final Avengers Doomsday trailer](https://signal24.info/article/avengers-doomsday-trailer-marvels-final-look-opens-with-steve-rogers-family-and-a-warning-from-doctor-doom) and [Disney's plan for the Hulu app](https://signal24.info/article/is-disney-discontinuing-the-hulu-app-what-we-know-as-hulu-moves-into-disney-in-december).
  
-=== EDITOR NOTE (do not paste) ===
-Small edits only: cut "112,000 signatures in early coverage" (no link) and the unlinked line on what Shephard says the show means; cut "from 32 critics" (the number changes); named Collider as the reviewer; added internal links. Excellent work.
+
  
